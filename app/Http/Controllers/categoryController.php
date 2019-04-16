@@ -69,4 +69,9 @@ class categoryController extends Controller
     	$category->delete();
     	return redirect()->route('category.list');
     }
+
+    public function show(Request $request){
+        $categories = Category::paginate(10);
+        return view('front.index', compact('categories'))->with('active', 'category');
+    }
 }

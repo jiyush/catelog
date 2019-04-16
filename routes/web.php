@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Front Route
+Route::get('/', 'categoryController@show')->name('home');
+
 Route::get('/admin', 'dashboardController@index')->name('dashboard');
 
 // Category
@@ -24,6 +27,7 @@ Route::post('/category/store', 'categoryController@store')->name('category.store
 Route::get('/category/edit/{id}', 'categoryController@edit')->name('category.edit');
 Route::post('/category/update', 'categoryController@update')->name('category.update');
 Route::post('/category/delete', 'categoryController@delete')->name('category.delete');
+Route::get('category/show', 'categoryController@show')->name('category.show');
 
 //industries
 Route::get('/industries', 'industriesController@list')->name('industry.list');
