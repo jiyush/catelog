@@ -60,7 +60,12 @@
                         @endforeach
                     @endif
                   </tbody>
+                  <tfoot>
+                  </tfoot>
                 </table>
+                @if(!empty($categories))
+                  {{  $categories->links() }}
+                @endif
               </div>
             </div>
           </div>

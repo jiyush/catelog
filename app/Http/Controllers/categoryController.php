@@ -10,7 +10,7 @@ use File;
 class categoryController extends Controller
 {
     public function list(Request $request){
-    	$categories = Category::paginate(10);
+    	$categories = Category::paginate(5);
     	return view('admin.category.list', compact('categories'))->with('active', 'category');
     }
 
@@ -71,7 +71,7 @@ class categoryController extends Controller
     }
 
     public function show(Request $request){
-        $categories = Category::paginate(10);
+        $categories = Category::paginate(6);
         return view('front.index', compact('categories'))->with('active', 'category');
     }
 }

@@ -182,10 +182,10 @@
             <h2 class="text-black">Industries  <strong>Category</strong> </h2>
           </div>
         </div>
-        <div class="row hosting" >
+        <div class="row hosting col-md-12" >
           @if(!empty($categories))
             @foreach($categories as $category)
-                <div class="col-md-4 col-lg-4 mb-5 mb-lg-4 d-flex align-items-center" >
+                <div class="align-items-center" style="border: 1px black ; margin: 20px;" >
                     <table>
                         <tr>
                             <td>
@@ -201,118 +201,12 @@
                 </div>
             @endforeach
           @endif
-          {{-- <div class="col-md-4 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="100">
-
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-portfolio23"></span>
-                </div>
-                <h2 class="h5">ENGINEERING</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> --}}
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="200">
-            
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-big104"></span>
-                </div>
-                <h2 class="h5">ELECTRICAL-ELECTRONICS-INSTR</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> -->
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="300">
-            
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-airplane86"></span>
-                </div>
-                <h2 class="h5">Transport</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> -->
-
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="400">
-
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-user144"></span>
-                </div>
-                <h2 class="h5">TextTile</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> -->
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="500">
-            
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-clipboard68"></span>
-                </div>
-                <h2 class="h5">PAPER & PACKAGING</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> -->
-          <!-- <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="600">
-            
-            <div class="unit-3 h-100 bg-white">
-              
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-user143"></span>
-                </div>
-                <h2 class="h5">CHEMICALS - DYES - PHARMACEUTICALS</h2>
-              </div>
-              <div class="unit-3-body">
-                <p>Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</p>
-              </div>
-            </div>
-
-          </div> -->
-
         </div>
-      
+        <div class="align-items-center" style="margin-left: 500px; margin-top: 50px;">
+          <center>
+            {{ $categories->links() }}
+        </center>
+        </div>
       </div>
     </div>
 

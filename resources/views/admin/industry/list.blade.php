@@ -6,16 +6,32 @@
 <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Industries</h1>
+            
+          </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h5 class="m-0 font-weight-bold text-primary">Industries
-              <div class="float-right">
-	              <a href="{{ route('industry.add') }}" class="btn btn-success btn-circle">
-	                    <i class="fas fa-plus-circle"></i>
-	                  </a>
-              </div>
-          </h5>
+                
+                      <form id="logout-form" action="{{ route('industry.list') }}" method="POST" >
+                            @csrf
+                            <div class="form-group row">
+                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                <input type="text" id="name" name="name" class="form-control form-control-user" id="" placeholder="Company Name">
+                              </div>
+                              
+                              <button  class="btn btn-warning">Search</button>
+                              <div class="float-right" style="margin-left: auto;">
+                                <a href="{{ route('industry.add') }}"  class="btn btn-success btn-circle">
+                                      <i class="fas fa-plus-circle"></i>
+                                    </a>
+                              </div>
+                            </div>
+
+                        </form>
+                  
+              
             </div>
             <div class="card-body">
               <div class="table-responsive">
