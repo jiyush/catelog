@@ -72,6 +72,6 @@ class categoryController extends Controller
 
     public function show(Request $request){
         $categories = Category::paginate(6);
-        return view('front.index', compact('categories'))->with('active', 'category');
+        return view('front.index', compact('categories'))->with('active', 'home');
     }
 }

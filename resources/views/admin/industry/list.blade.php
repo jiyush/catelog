@@ -14,14 +14,15 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 
-                      <form id="logout-form" action="{{ route('industry.list') }}" method="POST" >
+                      <form id="logout-form" action="{{ route('industry.list') }}" method="Get" >
                             @csrf
                             <div class="form-group row">
                               <div class="col-sm-3 mb-3 mb-sm-0">
-                                <input type="text" id="name" name="name" class="form-control form-control-user" id="" placeholder="Company Name">
+                                <input type="text" id="name" name="filters[name]" value="{{ Request::old('filters[name]') }}" class="form-control form-control-user" id="" placeholder="Company Name">
                               </div>
                               
                               <button  class="btn btn-warning">Search</button>
+                              <a style="margin-left: 10px;" href="{{ route('industry.list') }}" class="btn btn-primary"> Reset</a>
                               <div class="float-right" style="margin-left: auto;">
                                 <a href="{{ route('industry.add') }}"  class="btn btn-success btn-circle">
                                       <i class="fas fa-plus-circle"></i>
@@ -88,6 +89,7 @@
                     @endif
                   </tbody>
                 </table>
+                {{ $industries->links() }}
               </div>
             </div>
           </div>

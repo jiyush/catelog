@@ -16,7 +16,8 @@
 // });
 
 //Front Route
-Route::get('/', 'categoryController@show')->name('home');
+Route::get('/', 'categoryController@show')->name('root');
+Route::get('/industries', 'industriesController@AllIndustry')->name('industry.all');
 
 
 

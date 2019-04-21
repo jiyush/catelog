@@ -9,7 +9,24 @@ use App\Industry;
 class industriesController extends Controller
 {
     public function list(Request $request){
-    	$industries = Industry::paginate(10);
+        $filter = $request->get('filters');
+        
+        if(!empty($filter)){
+            $industries = Industry::where(function($q) use ($filter) {
+                if(!empty($filter['name'])){
+                    $q->where('name', 'LIKE', '%'.$filter['name'].'%');
+                }
+                if(!empty($filter['category'])){
+                    $q->whereCategory($filter['category']);
+                }
+                if(!empty($filter['address'])){
+                    $q->where('address', 'LIKE', '%'.$filter['address'].'%');
+                }
+            })->paginate(10);
+        }else{
+            $industries = Industry::paginate(10);
+        }
+    	// $industries = Industry::paginate(10);
     	return view('admin.industry.list', compact('industries'))->with('active', 'industries');
     }
 
@@ -71,6 +88,27 @@ class industriesController extends Controller
     	$industry = Industry::whereId($request->id)->first();
     	$industry->delete();
     	return redirect()->route('industry.list');	
+    }
+
+    public function AllIndustry(Request $request){
+        $filter = $request->get('filters');
+        
+        if(!empty($filter)){
+            $industries = Industry::where(function($q) use ($filter) {
+                if(!empty($filter['name'])){
+                    $q->where('name', 'LIKE', '%'.$filter['name'].'%');
+                }
+                if(!empty($filter['category'])){
+                    $q->whereCategory($filter['category']);
+                }
+                if(!empty($filter['address'])){
+                    $q->where('address', 'LIKE', '%'.$filter['address'].'%');
+                }
+            })->paginate(10);
+        }else{
+            $industries = Industry::paginate(10);
+        }
+        return view('front.list', compact('industries'))->with('active', 'industries');
     }
 }
 
