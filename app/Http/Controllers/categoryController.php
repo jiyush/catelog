@@ -71,7 +71,7 @@ class categoryController extends Controller
     }
 
     public function show(Request $request){
-        $categories = Category::paginate(6);
+        $categories = Category::all();
         return view('front.index', compact('categories'))->with('active', 'home');
     }
 }
