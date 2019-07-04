@@ -459,7 +459,7 @@ h6 {
 
 .btn-one,
 .btn-one:hover {
-    background-color: #ff3a54;
+    background-color: #fff;
     color: #fff;
 }
 
@@ -891,7 +891,7 @@ h6 {
 .preloader {
     width: 100%;
     height: 100%;
-    background-color: #ff3a54;
+    background-color: #282ACA;
     position: fixed;
     left: 0;
     top: 0;
@@ -1409,7 +1409,7 @@ h6 {
 
 .head-top-two {
     background-color: #fff;
-    border-bottom: 1px solid #ff3a54;
+    border-bottom: 1px solid #282ACA;
 }
 
 .head-top .socials {
@@ -1445,7 +1445,7 @@ h6 {
 }
 
 .head-top-two .socials a:hover {
-    color: #ff3a54;
+    color: #228ACA;
 }
 
 .socials a:last-child {
@@ -1484,7 +1484,7 @@ h6 {
 }
 
 .head-top-two .head-contact li i {
-    color: #ff3a54
+    color: #282ACA
 }
 
 .head-contact li:first-child {
@@ -1580,7 +1580,7 @@ h6 {
     height: calc(100% + 10px);
     width: 100%;
     content: "";
-    background-color: #ff3a54;
+    background-color: #ffffff;
     left: 0;
     top: 0;
     z-index: 1;
@@ -1596,7 +1596,7 @@ h6 {
 .menu-two .navbar-nav .nav-item a,
 .menu-two .navbar-nav .dropdown-item a,
 .menu-two .navbar-expand-lg .navbar-nav .nav-link {
-    color: #000
+    color: #fff
 }
 
 .menu-two .navbar-nav .nav-item .nav-btn {

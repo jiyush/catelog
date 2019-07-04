@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="">
 
     <!--  CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">    
@@ -91,14 +91,21 @@
                 </div>
             </div>
         </div>
-        <div class="theme-header-two affix">
+        <div class="theme-header-two affix" style="background-color: #228ACA !important;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-12">
-                        <div class="logo-two logo-wrap">
+                        {{-- <div class="logo-two logo-wrap">
                             <div class="logo my-1">
                                 <a href="index.html">
                                     <img src="assets/img/logo-white.png" alt="logo">
+                                </a>
+                            </div>
+                        </div> --}}
+                        <div class="logo-two logo-wrap">
+                            <div class="logo my-1">
+                                <a href="index.html">
+                                    <img src="./images/jcurve.jpeg">
                                 </a>
                             </div>
                         </div>
@@ -116,23 +123,15 @@
                                 <!-- Links -->
                                 <div class="main-menu collapse navbar-collapse" id="nav-content">
                                     <ul class="navbar-nav ml-auto align-items-lg-center">
-                                        <li class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle current" data-toggle="dropdown">home</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item dropdown">
-                                                    <a href="index.html">home 1</a>
-                                                </li>
-                                                <li class="dropdown-item dropdown">
-                                                    <a href="index-2.html">home 2</a>
-                                                </li>
-                                            </ul>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link  current" data-toggle="dropdown">home</a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a class="nav-link" href="about.html">about us</a>
                                         </li>
 
-                                        <li class="nav-item dropdown">
+                                        <li class="nav-item ">
                                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">listing</a>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item">
@@ -150,124 +149,16 @@
                                             </ul>
                                         </li>
 
-                                        <li class="nav-item dropdown">
-                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">blogs</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item">
-                                                    <a href="blog-page.html">blog page</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="blog-right-sidebar.html">blog rightbar</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="blog-left-sidebar.html">blog leftbar</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="blog-detail.html">blog detail</a>
-                                                </li>
-                                                <li class="dropdown-item dropdown">
-                                                    <a class="dropdown-toggle" href="javascript:void(0)">level 1</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item">
-                                                            <a href="javascript:void(0)">level 2</a>
-                                                        </li>
-                                                        <li class="dropdown-item dropdown">
-                                                            <a href="javascript:void(0)" class="dropdown-toggle">level 2</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li class="dropdown-item">
-                                                                    <a href="javascript:void(0)">level 3</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        
 
-                                        <li class="nav-item dropdown has-mega">
-                                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                pages
-                                            </a>
-                                            <ul class="dropdown-menu mega-dropdown">
-                                                <li>
-                                                    <ul>
-                                                        <li class="dropdown-item">
-                                                            <a href="about.html">about us</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="faq.html">faq</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="service.html">service</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="pricing.html">pricing</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-
-                                                <li>
-                                                    <ul>
-                                                        <li class="dropdown-item">
-                                                            <a href="error-page.html">error page</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="add-list.html">add list</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="contact.html">contact us</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="login.html">login / signup</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <ul>
-                                                        <li class="dropdown-item">
-                                                            <a href="listing.html">all listings</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="listing-sidebar.html">listing with sidebar</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="listing-with-map.html">listing with map</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="listing-detail.html">listing detail</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <ul>
-                                                        <li class="dropdown-item">
-                                                            <a href="blog-page.html">blog page</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="blog-right-sidebar.html">blog rightbar</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="blog-left-sidebar.html">blog leftbar</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="blog-detail.html">blog detail</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        
 
                                         <li class="nav-item">
                                             <a class="nav-link" href="contact.html">contact us</a>
                                         </li>
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#search">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
                                         <li class="nav-item d-lg-block d-none">
-                                            <a href="add-list.html" class="btn btn-one btn-anim br-5 px-3 nav-btn">
+                                            <a href="add-list.html" style="color: #228ACA !important" class="btn btn-one btn-anim br-5 px-3 nav-btn">
                                                 <i class="fa fa-plus-circle"></i> add listing
                                             </a>
                                         </li>
@@ -307,10 +198,7 @@
                     <h2>Get the j Curve in your Business</h2>
                 </div>
             <!-- </div> -->
-            <div class="mt-5 text-center">
-                <a href="#" class="btn btn-two btn-anim mt-5 br-5 px-5">
-                    <i class="fa fa-search"></i>explore more </a>
-            </div>
+            
         </div>
     </section>
     <!-- banner end -->
