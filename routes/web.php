@@ -17,6 +17,9 @@
 
 //Front Route
 Route::get('/', 'categoryController@show')->name('root');
+Route::get('/addlisting', 'categoryController@addListing')->name('listing.add');
+Route::post('/addlisting', 'categoryController@submitList')->name('listing.submit');
+
 Route::get('/industries', 'industriesController@AllIndustry')->name('industry.all');
 
 

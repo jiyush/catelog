@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use Illuminate\Support\Facades\Input;
 use File;
+use App\Mail\AddListing;
+use Illuminate\Support\Facades\Mail;
 
 class categoryController extends Controller
 {
@@ -73,5 +75,19 @@ class categoryController extends Controller
     public function show(Request $request){
         $categories = Category::all();
         return view('front.index', compact('categories'))->with('active', 'home');
+    }
+
+    public function addListing(Request $request){
+        $categories = Category::all();
+        return view('front.addListing', compact('categories'));
+    }
+
+    public function submitList(Request $request){
+        $data = new \stdClass();
+        $data->indName = $request->indName;
+        $data->indCat = $request->indCat;
+        Mail::to($request->email)->send(new AddListing($data));
+        return redirect()->route('root');
+        // dd($request->all());
     }
 }
