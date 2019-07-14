@@ -6,9 +6,14 @@
                     <div class="col-xl-4 col-lg-12 col-12 mb-60">
                         <div class="company-details">
                             <img src="{{ asset('/images/jcurve2.jpeg') }}" style="height: 77.23px; width: 215px;" class="foot-logo mb-4" alt="lister">
-                            <p class="pb-2">Lorem ipsum dolor sit amet, consect tuer adipi cin elit. Aen sociis nato pe na ibus magnis dis
-                                partur monte na et ridiculu onec quam felis. castei efte tuerg scn kt isceding elit ende
-                                cd magum socadaiis nato ipsf.</p>
+                            <p class="pb-2">J Curve is committed to help you find exactly
+                                what you're looking for. Apart from giving you
+                                up-to-date phone numbers and addresses of
+                                local businesses and industries across the
+                                state, we'll also give you driving directions to
+                                get there! There are more than 5000 listings
+                                and we’re adding more every day.
+                            </p>
                             <div class="socials mt-4">
                                 <a href="#">
                                     <i class="fab fa-facebook-f"></i>

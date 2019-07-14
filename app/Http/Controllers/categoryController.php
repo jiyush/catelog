@@ -86,8 +86,11 @@ class categoryController extends Controller
         $data = new \stdClass();
         $data->indName = $request->indName;
         $data->indCat = $request->indCat;
+        $data->address = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
+        $data->description = $request->description;
+        $data->phone = $request->phone;
+        $data->site = $request->website;
         Mail::to($request->email)->send(new AddListing($data));
         return redirect()->route('root');
-        // dd($request->all());
     }
 }

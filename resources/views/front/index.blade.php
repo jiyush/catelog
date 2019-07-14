@@ -19,11 +19,10 @@
     <section class="bg-w tri-bg sp-100-70 o-hide">
         <div class="container">
             <div class="list-category-slider owl-carousel owl-theme mb-60">
-                @if(!empty($categories))
+                {{-- @if(!empty($categories))
                     @foreach($categories as $category)
                         <div class="list-items2 btn-anim">
                             <div class="icon-box"  >
-                                {{-- <i class="flaticon-find"></i> --}}
                                 <img src="{{ asset($category->path) }}" style="height: 100px" >
                             </div>
                             <h5 class="mb-0 mt-3">
@@ -31,7 +30,7 @@
                             </h5>
                         </div>
                     @endforeach
-                @endif
+                @endif --}}
                 
             </div>
             <div class="row justify-content-md-center">
@@ -105,6 +104,63 @@
     </section>
     <!-- counter ends -->
 
+    <!-- features start-->
+    <section class="features sp-100-70 bg-w">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="all-title">
+                        <h3 class="sec-title">
+                            Why We Are Best
+                        </h3>
+                        <svg class="title-sep">
+                            <path fill-rule="evenodd" d="M32.000,13.000 L32.000,7.000 L35.000,7.000 L35.000,13.000 L32.000,13.000 ZM24.000,4.000 L27.000,4.000 L27.000,16.000 L24.000,16.000 L24.000,4.000 ZM16.000,-0.000 L19.000,-0.000 L19.000,20.000 L16.000,20.000 L16.000,-0.000 ZM8.000,4.000 L11.000,4.000 L11.000,16.000 L8.000,16.000 L8.000,4.000 ZM-0.000,7.000 L3.000,7.000 L3.000,13.000 L-0.000,13.000 L-0.000,7.000 Z"
+                            />
+                        </svg>
+                        <p>
+                            Get Listed with us and improve your local marketing and be a part of our family to get everything in your pocket!
+                            Promote your business online, securely and conveniently from the comfort of your home or office
+                            in leading local business search engine and get the J Curve in your business!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-30">
+                    <div class="feature-item type-2">
+                        <div class="icon-box">
+                            <i class="flaticon-rising"></i>
+                        </div>
+                        <h5>our vision</h5>
+                        <p>To provide fast, free & reliable information to our users and connect buyers to sellers.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-30">
+                    <div class="feature-item type-2">
+                        <div class="icon-box">
+                            <i class="flaticon-list"></i>
+                        </div>
+                        <h5>missions</h5>
+                        <p>To organise all genuine information and make it useful in growing your business.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-12 mb-30">
+                    <div class="feature-item type-2">
+                        <div class="icon-box">
+                            <i class="flaticon-find-1"></i>
+                        </div>
+                        <h5>find your listing</h5>
+                        <p>If you are thinking of expanding your business; get registered for FREE and even Premium!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- features end -->
     
     
 
@@ -121,8 +177,8 @@
                             <path fill-rule="evenodd" d="M32.000,13.000 L32.000,7.000 L35.000,7.000 L35.000,13.000 L32.000,13.000 ZM24.000,4.000 L27.000,4.000 L27.000,16.000 L24.000,16.000 L24.000,4.000 ZM16.000,-0.000 L19.000,-0.000 L19.000,20.000 L16.000,20.000 L16.000,-0.000 ZM8.000,4.000 L11.000,4.000 L11.000,16.000 L8.000,16.000 L8.000,4.000 ZM-0.000,7.000 L3.000,7.000 L3.000,13.000 L-0.000,13.000 L-0.000,7.000 Z"
                             />
                         </svg>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor penatibus
-                            ean massa. Cum sociis natoqu penatibus et magnis dis parturient montes.</p>
+                        <p>If you are thinking of expanding your business; get registered for free
+and even premium! Get listed with us and experience the difference!</p>
                     </div>
                 </div>
             </div>
@@ -253,15 +309,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="app-content text-lg-left text-center">
-                        <h3>Android App and iOS App Available </h3>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectadetudzdae rcquisc adipiscing elit. Aenean socada commodo ligaui
-                            egets dolor. </p>
+                        <h3>Coming Soon on Android!</h3>
+                        <p class="mb-4">We are planning to launch Android App soon so that we can give
+our service more faster and easier!</p>
                         <div class="app-icon">
                             <a href="#" class="mr-4">
                                 <img src="assets/img/home/google-play.png" alt="google-play">
-                            </a>
-                            <a href="#">
-                                <img src="assets/img/home/play-store.png" alt="play-store">
                             </a>
                         </div>
                     </div>
