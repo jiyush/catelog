@@ -169,5 +169,6 @@
     </div>
     </section>
     <!-- add-list end -->
+    
 
 @include('front.layouts.footer')

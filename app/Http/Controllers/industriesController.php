@@ -108,7 +108,7 @@ class industriesController extends Controller
         }else{
             $industries = Industry::paginate(10);
         }
-        return view('front.list', compact('industries'))->with('active', 'industries');
+        return view('front.indListing', compact('industries'))->with('active', 'industries');
     }
 }
 

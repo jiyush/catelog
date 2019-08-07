@@ -33,25 +33,33 @@
                 @endif --}}
                 
             </div>
+            <form method="get" action="{{ route('industry.all') }}">
             <div class="row justify-content-md-center">
-                <div class="col-lg-3 col-md-6">
-                    <input type="text" class="form-control" placeholder="What are you looking for?">
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <select class="form-control custom-select" id="service2">
-                        <option>all categories</option>
-                        <option>hotel</option>
-                        <option>tour</option>
-                        <option>pharmacy</option>
-                        <option>shops</option>
-                    </select>
+                    <div class="col-lg-3 col-md-3">
+                        <input type="text" name="filters['name']"  class="form-control"  placeholder="Search by industy">
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <input type="text" name="filters['address']" class="form-control"  placeholder="Search By Location">
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <select class="form-control custom-select" name="filters['category']" id="service2">
+                            <option>all categories</option>
+                            @if(!empty($categories))
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
 
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <button type="submit" class="btn btn-one btn-anim br-5 w-100 mb-30">
-                        <i class="fa fa-search"></i> search</button>
-                </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        {{-- <button type="submit" class="btn btn-one btn-anim br-5 w-100 mb-30">
+                            <i class="fa fa-search"></i> search</button> --}}
+                            <button type="submit" class="btn btn-one" style="background-color: #228ACA !important;color: #fff;">
+                            <i class="fa fa-search"></i> search</button>
+                    </div>
             </div>
+        </form>
         </div>
     </section>
     <!-- listing start -->
