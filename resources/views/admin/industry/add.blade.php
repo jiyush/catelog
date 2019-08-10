@@ -14,23 +14,23 @@
           </h5>
             </div>
             <div class="card-body">
-              <form action="{{ route('industry.store') }}" method="POST" >
+              <form action="{{ route('industry.store') }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="name">Company Name</label>
-                    <input type="text" id="name" name="name" class="form-control form-control-user" id="" placeholder="Company Name">
+                    <input type="text" id="name" name="name" class="form-control form-control-user" id="" placeholder="Company Name" required>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="email">Company Email</label>
-                    <input type="text" id="email" name="email" class="form-control form-control-user" id="" placeholder="Company Email">
+                    <input type="text" id="email" name="email" class="form-control form-control-user" id="" placeholder="Company Email" required>
                   </div>
                 </div>
               
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="category">Company Category</label>
-                    <select id="category" name="category" class="form-control form-control-user">
+                    <select id="category" name="category" class="form-control form-control-user" required>
                       <option>Select Category</option>
                       @if(!empty($categories))
                           @foreach($categories as $cat)
@@ -41,35 +41,41 @@
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="phone">Company Phone</label>
-                    <input type="number" name="phone" class="form-control form-control-user" id="phone" placeholder="Company Phone">
+                    <input type="number" name="phone" class="form-control form-control-user" id="phone" placeholder="Company Phone" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
                     <label for="street" >Address</label>
-                    <input type="text"  id="street" name="street" class="form-control form-control-user" id="" placeholder="Street">
+                    <input type="text"  id="street" name="street" class="form-control form-control-user" id="" placeholder="Street" required>
                   </div>
                   
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="city"  class="form-control form-control-user" id="" placeholder="City">
+                    <input type="text"  id="street" name="city"  class="form-control form-control-user" id="" placeholder="City" required>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="state" class="form-control form-control-user" id="" placeholder="State">
+                    <input type="text"  id="street" name="state" class="form-control form-control-user" id="" placeholder="State" required >
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Products</label>
-                    <textarea name="products" class="form-control form-control-user"></textarea>
+                    <textarea name="products" class="form-control form-control-user" required></textarea>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Description</label>
-                    <textarea name="description" class="form-control form-control-user"></textarea>
+                    <textarea name="description" class="form-control form-control-user" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="products" >Image</label>
+                    <input type="file" name="image" required>
                   </div>
                 </div>
                 

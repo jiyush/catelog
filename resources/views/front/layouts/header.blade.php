@@ -36,11 +36,11 @@
                                 432-A2, Park Avenue, US
                             </li>
 
-                            <li class="login-sign">
+                            {{-- <li class="login-sign">
                                 <a href="login.html">
                                     <i class="fa fa-user"></i> login / signup
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

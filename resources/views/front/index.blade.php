@@ -36,14 +36,14 @@
             <form method="get" action="{{ route('industry.all') }}">
             <div class="row justify-content-md-center">
                     <div class="col-lg-3 col-md-3">
-                        <input type="text" name="filters['name']"  class="form-control"  placeholder="Search by industy">
+                        <input type="text" name="filters[name]"  class="form-control"  placeholder="Search by industy">
                     </div>
                     <div class="col-lg-3 col-md-3">
-                        <input type="text" name="filters['address']" class="form-control"  placeholder="Search By Location">
+                        <input type="text" name="filters[address]" class="form-control"  placeholder="Search By Location">
                     </div>
                     <div class="col-lg-3 col-md-3">
-                        <select class="form-control custom-select" name="filters['category']" id="service2">
-                            <option>all categories</option>
+                        <select class="form-control custom-select" name="filters[category]" id="service2">
+                            <option value="">all categories</option>
                             @if(!empty($categories))
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

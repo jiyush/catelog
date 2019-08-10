@@ -14,7 +14,7 @@
           </h5>
             </div>
             <div class="card-body">
-              <form action="{{ route('industry.update') }}" method="POST" >
+              <form action="{{ route('industry.update') }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <input type="hidden" name="id" value="{{ $industry->id }}">
                 <div class="form-group row">
@@ -75,6 +75,12 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Description</label>
                     <textarea name="description" class="form-control form-control-user">{{$industry->description}}</textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="products" >Image</label>
+                    <input type="file" name="image">
                   </div>
                 </div>
                 
