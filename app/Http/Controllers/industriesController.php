@@ -115,32 +115,32 @@ class industriesController extends Controller
     }
 
     public function AllIndustry(Request $request){
-        $filter = $request->get('filters');
+        $filters = $request->get('filters');
 
         $categories = Category::all();
     
-        if(!empty($filter)){
+        if(!empty($filters)){
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
-                ->where(function($q) use ($filter) {
-                    if(!empty($filter['name'])){
-                        $q->where('name', 'LIKE', '%'.$filter['name'].'%');
+                ->where(function($q) use ($filters) {
+                    if(!empty($filters['name'])){
+                        $q->where('industries.name', 'LIKE', '%'.$filters['name'].'%');
                     }
-                    if(!empty($filter['category'])){
-                        $q->whereCategory($filter['category']);
+                    if(!empty($filters['category'])){
+                        $q->whereCategory($filters['category']);
                     }
-                    if(!empty($filter['address'])){
-                        $q->where('address', 'LIKE', '%'.$filter['address'].'%');
+                    if(!empty($filters['address'])){
+                        $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
                     }
                 })
                 ->select('industries.*', 'categories.name as category_name')
-                ->paginate(10);
+                ->paginate(9);
         }else{
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
                                     ->select('industries.*', 'categories.name as category_name')
-                                    ->paginate(10);
+                                    ->paginate(9);
         }
-        // dd($industries);
-        return view('front.indListing', compact('industries','categories'))->with('active', 'industries');
+        // dd($filters);
+        return view('front.indListing', compact('industries','categories', 'filters'))->with('active', 'industries');
     }
 }
 

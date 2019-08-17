@@ -39,11 +39,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <label>Industry Name</label>
-                                <input type="text" id="name" name="indName" class="form-control" placeholder="Industry Name">
+                                <input type="text" id="name" name="indName" class="form-control" placeholder="Industry Name" required>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>category</label>
-                                <select class="form-control custom-select" name="indCat" id="categories">
+                                <select class="form-control custom-select" name="indCat" id="categories" required>
                                     <option>select categories</option>
                                     @if(!empty($categories))
                                     	@foreach($categories as $category)
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>keywords</label>
-                                <input type="text" id="keywords" class="form-control" placeholder="Keywords Here">
+                                <input type="text" id="keywords" class="form-control" placeholder="Keywords Here" required>
                             </div>
                         </div>
                 </div>
@@ -70,19 +70,19 @@
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <label>address</label>
-                                <input type="text" id="adress" name="street" class="form-control" placeholder="address here">
+                                <input type="text" id="adress" name="street" class="form-control" placeholder="address here" required> 
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>City</label>
-                                <input type="text" id="adress" name="city" class="form-control" placeholder="City here">
+                                <input type="text" id="adress" name="city" class="form-control" placeholder="City here" required>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>state</label>
-                                <input type="text" id="state" name="state" class="form-control" placeholder="State Here">
+                                <input type="text" id="state" name="state" class="form-control" placeholder="State Here" required>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>zip code</label>
-                                <input type="text" id="code" name="pincode" class="form-control" placeholder="Zip Here">
+                                <input type="text" id="code" name="pincode" class="form-control" placeholder="Zip Here" required>
                             </div>
                         </div>
                     
@@ -104,23 +104,23 @@
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <label>Products Description</label>
-                                <textarea rows="10" name="description" class="form-control" placeholder="write here" id="comment"></textarea>
+                                <textarea rows="10" name="description" class="form-control" placeholder="write here" id="comment" required></textarea>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <label>phone</label>
-                                        <input type="text" name="phone" id="phn" class="form-control" placeholder="phone no">
+                                        <input type="text" name="phone" id="phn" class="form-control" placeholder="phone no" required>
                                     </div>
                                     
                                     <div class="col-lg-6 col-12">
                                         <label>e mail</label>
-                                        <input type="text" name="email" id="mail" class="form-control" placeholder="e mail">
+                                        <input type="text" name="email" id="mail" class="form-control" placeholder="e mail" required>
                                     </div>
                                     
                                     <div class="col-lg-6 col-12">
                                         <label>website</label>
-                                        <input type="text" name="website" id="website" class="form-control" placeholder="website">
+                                        <input type="text" name="website" id="website" class="form-control" placeholder="website" required>
                                     </div>
                                     
                                 </div>

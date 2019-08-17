@@ -11,16 +11,16 @@ class AddListing extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $inquiry;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($inquiry)
     {
-        $this->data = $data;
+        $this->inquiry = $inquiry;
     }
 
     /**

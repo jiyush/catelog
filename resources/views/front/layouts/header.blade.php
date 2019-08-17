@@ -72,15 +72,15 @@
                                 <div class="main-menu collapse navbar-collapse" id="nav-content">
                                     <ul class="navbar-nav ml-auto align-items-lg-center">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link  current" data-toggle="dropdown">home</a>
+                                            <a href="{{ route('root') }}" class="nav-link  current" >home</a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about.html">about us</a>
+                                            <a class="nav-link" href="{{ route('about') }}">about us</a>
                                         </li>
 
                                         <li class="nav-item ">
-                                            <a href="javascript:void(0)" class="nav-link" >listing</a>
+                                            <a href="{{ route('industry.all') }}" class="nav-link" >listing</a>
                                         </li>
 
                                         
@@ -88,7 +88,7 @@
                                         
 
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">contact us</a>
+                                            <a class="nav-link" href="{{ route('contactus') }}">contact us</a>
                                         </li>
 
                                         <li class="nav-item d-lg-block d-none">

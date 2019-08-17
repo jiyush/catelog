@@ -6,16 +6,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3>add listing</h3>
+                    <h3>Listing</h3>
                     <ul class="banner-link text-center">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('root') }}">Home</a>
                         </li>
                         <li>
                             <a href="javascript:void(0)">listing</a>
                         </li>
                         <li>
-                            <span class="active">add listing</span>
+                            <span class="active">Industries listing</span>
                         </li>
                     </ul>
                 </div>
@@ -31,12 +31,20 @@
                 <form method="get" action="{{ route('industry.all') }}">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <input type="text" name="filters[name]"  class="form-control"  placeholder="Search by industy">
+                            <input type="text" name="filters[name]" 
+                            @if(!empty($filters['name']))
+                                value="{{$filters['name']}}"        
+                            @endif
+                             class="form-control"  placeholder="Search by industy">
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="input-wrap">
                                 <i class="fa fa-crosshairs"></i>
-                                <input type="text" name="filters[address]" class="form-control"  placeholder="Search By Location">
+                                <input type="text" name="filters[address]" 
+                                @if(!empty($filters['address']))
+                                    value="{{$filters['address']}}"        
+                                @endif
+                                class="form-control"  placeholder="Search By Location">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -45,7 +53,15 @@
                                     <option value="">all categories</option>
                                     @if(!empty($categories))
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @if(!empty($filters['category']))
+                                                @if($filters['category'] == $category->id)
+                                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                                @else
+                                                    <option value="{{ $category->id }}" >{{ $category->name }}</option>    
+                                                @endif
+                                            @else
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>
@@ -67,7 +83,7 @@
                     @if(!empty($industries))
                         @foreach($industries as $industry)
                             <div class="col-lg-4 col-md-6 col-12 mb-30">
-                                <div class="listing-item p-2">
+                                <div class="listing-item p-2" >
                                     {{-- <div class="img-list"> --}}
                                         <div class="img-holder">
                                             <img src="{{ asset($industry->image) }}" alt="list">
@@ -85,9 +101,11 @@
                                         <h5 class="mb-2">
                                             <a href="listing-detail.html">{{ $industry->name }}</a>
                                         </h5>
-                                        <p>Produsts: {{ $industry->products }}</p>
-                                        <p>Address: {{ $industry->address }}</p>
-                                        <ul class="ctg-info2 pt-2 mt-3 d-flex justify-content-between flex-wrap">
+                                        <div style="height: 130px">
+                                            <p>Produsts: {{ $industry->products }}</p>
+                                            <p>Address: {{ $industry->address }}</p>
+                                        </div>
+                                        <ul  class="ctg-info2 pt-2 mt-3 d-flex justify-content-between flex-wrap">
                                             <li class="mt-1">
                                                 <a href="#">
                                                     <i class="fa fa-envelope mr-2"></i>{{ $industry->email }}</a>
@@ -106,7 +124,8 @@
                     
                     {{-- pagination --}}
                     <div class="col-12 text-center mt-30">
-                        <a href="#" class="btn btn-one btn-anim" style="background-color: #228ACA !important;color: #fff;">load more</a>
+                        {{ $industries->links() }}
+                        {{-- <a href="#" class="btn btn-one btn-anim" style="background-color: #228ACA !important;color: #fff;">load more</a> --}}
                     </div>
                     {{-- end pagination --}}
                     {{-- Industry Listinf end --}}

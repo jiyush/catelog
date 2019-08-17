@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use File;
 use App\Mail\AddListing;
 use Illuminate\Support\Facades\Mail;
+use App\Inquiry;
 
 class categoryController extends Controller
 {
@@ -83,14 +84,18 @@ class categoryController extends Controller
     }
 
     public function submitList(Request $request){
-        $data = new \stdClass();
-        $data->indName = $request->indName;
-        $data->indCat = $request->indCat;
-        $data->address = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
-        $data->description = $request->description;
-        $data->phone = $request->phone;
-        $data->site = $request->website;
-        Mail::to($request->email)->send(new AddListing($data));
+
+        $data = array();
+        $data['name'] = $request->indName;
+        $data['email'] = $request->email;
+        $data['category'] = $request->indCat;
+        $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
+        $data['description'] = $request->description;
+        $data['phone'] = $request->phone;
+        $data['website'] = $request->website;
+        $data['keywords'] = $request->keywords;
+        $inquiry = Inquiry::create($data);
+        Mail::to($request->email)->send(new AddListing($inquiry));
         return redirect()->route('root');
     }
 }

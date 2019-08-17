@@ -7,27 +7,27 @@
 	<table>
 		<tr>
 			<td>INdustry Name:-</td>
-			<td>{{ $data->indName }}</td>
+			<td>{{ $inquiry->name }}</td>
 		</tr>
 		<tr>
 			<td>Category</td>
-			<td>{{ $data->indCat }}</td>
+			<td>{{ $inquiry->category }}</td>
 		</tr>
 		<tr>
 			<td>Address</td>
-			<td>{{$data->address }}</td>
+			<td>{{$inquiry->address }}</td>
 		</tr>
 		<tr>
 			<td>Phone</td>
-			<td>{{$data->phone }}</td>
+			<td>{{$inquiry->phone }}</td>
 		</tr>
 		<tr>
 			<td>Decriptions</td>
-			<td>{{$data->description }}</td>
+			<td>{{$inquiry->description }}</td>
 		</tr>
 		<tr>
 			<td>WebSIte</td>
-			<td>{{$data->site }}</td>
+			<td>{{$inquiry->website }}</td>
 		</tr>
 	</table>
 </body>

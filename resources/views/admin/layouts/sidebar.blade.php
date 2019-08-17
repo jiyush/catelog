@@ -55,6 +55,21 @@
           <i class="fas fa-fw fa-list-alt "></i>
           <span>Categories</span></a>
       </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Categories-->
+      <li   @if(!empty($active) && $active == 'inquiry' ) 
+                             class="nav-item active" 
+                             @else
+                             class="nav-item" 
+                           @endif 
+       >
+        <a class="nav-link" href="{{ route('inquiry.list') }}">
+          <i class="fas fa-fw fa-list-ul "></i>
+          <span>Inquies</span></a>
+      </li>
       
 
       <!-- Divider -->

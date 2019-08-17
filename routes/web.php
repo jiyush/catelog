@@ -21,6 +21,8 @@ Route::get('/addlisting', 'categoryController@addListing')->name('listing.add');
 Route::post('/addlisting', 'categoryController@submitList')->name('listing.submit');
 
 Route::get('/industries', 'industriesController@AllIndustry')->name('industry.all');
+Route::get('/about', 'aboutusController@index')->name('about');
+Route::get('contactus', 'aboutusController@contact')->name('contactus');
 
 
 
@@ -54,6 +56,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 	Route::get('/industries/view/{id}', 'industriesController@view')->name('industry.view');
 	Route::post('/industries/update', 'industriesController@update')->name('industry.update');
 	Route::post('/industries/delete', 'industriesController@delete')->name('industry.delete');
+
+	// Inquuiry
+	Route::get('/inquuiry', 'inquuiryController@index')->name('inquiry.list');
 
 	//Admin user Routes
 	Route::get('/profile', 'AdminController@show')->name('user.profile');
