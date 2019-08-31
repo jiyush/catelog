@@ -23,6 +23,7 @@ Route::post('/addlisting', 'categoryController@submitList')->name('listing.submi
 Route::get('/industries', 'industriesController@AllIndustry')->name('industry.all');
 Route::get('/about', 'aboutusController@index')->name('about');
 Route::get('contactus', 'aboutusController@contact')->name('contactus');
+Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.email');
 
 
 

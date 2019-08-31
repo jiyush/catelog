@@ -494,7 +494,7 @@ Author:         Company Name
   Google map
 ====================================== */
 if (document.getElementById("theme-map")) {
-  var myCenter = new google.maps.LatLng(-37.813628, 144.963058);
+  var myCenter = new google.maps.LatLng(20.37175, 72.90493);
   function initialize() {
     var mapProp = {
       center: myCenter,

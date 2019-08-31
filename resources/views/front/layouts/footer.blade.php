@@ -79,6 +79,8 @@
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('assets/js/tilt.jquery.js') }}"></script>
+    <!-- google map api  -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM&callback=initMap"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 
