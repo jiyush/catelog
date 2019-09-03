@@ -33,27 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-60">
-                        <div class="recent-post">
-                            <div class="foot-title">
-                                <h4>useful links</h4>
-                            </div>
-                            <ul class="quick-link">
-                                <li>
-                                    <a href="add-list.html">add listing</a>
-                                </li>
-                                <li>
-                                    <a href="sign-in.html">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">Lsting</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">contact us</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                     
                 </div>
             </div>

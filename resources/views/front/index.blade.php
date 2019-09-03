@@ -6,8 +6,8 @@
         <div class="banner-image2">
             <!-- <div class="tilt-anim" data-tilt> -->
                 <div class="banner-content">
-                    <!-- <p class="text-uppercase mb-4">Lorem ipsum dolor sit amet consecws eftetuer adscnki</p> -->
-                    <h2>Get the j Curve in your Business</h2>
+                    
+                    <h2>Find The Best Thing In Your City</h2>
                 </div>
             <!-- </div> -->
             
@@ -310,11 +310,11 @@ and even premium! Get listed with us and experience the difference!</p>
     <div class="app-section bg-red tri-bg-w sp-100">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 d-none d-lg-block">
+                {{-- <div class="col-lg-6 d-none d-lg-block">
                     <div class="app-img mr-5">
                         <img src="assets/img/home/app-phn.png" alt="lister-app">
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-lg-6">
                     <div class="app-content text-lg-left text-center">
                         <h3>Coming Soon on Android!</h3>

@@ -74,14 +74,14 @@
                                         <li class="nav-item">
                                             <a href="{{ route('root') }}" class="nav-link  current" >home</a>
                                         </li>
+                                        <li class="nav-item ">
+                                            <a href="{{ route('industry.all') }}" class="nav-link" >listing</a>
+                                        </li>
 
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('about') }}">about us</a>
                                         </li>
 
-                                        <li class="nav-item ">
-                                            <a href="{{ route('industry.all') }}" class="nav-link" >listing</a>
-                                        </li>
 
                                         
 
