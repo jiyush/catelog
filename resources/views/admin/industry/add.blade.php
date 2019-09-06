@@ -14,6 +14,15 @@
           </h5>
             </div>
             <div class="card-body">
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
               <form action="{{ route('industry.store') }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group row">
@@ -74,8 +83,16 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="type">Listing Type</label>
+                    <select id="type" name="type" class="form-control form-control-user" required>
+                          <option selected value="">Select Type</option>
+                          <option value="free">Free</option>
+                          <option value="paid">Paid</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Image</label>
-                    <input type="file" name="image" required>
+                    <input type="file" class="form-control" name="image[]" multiple required>
                   </div>
                 </div>
                 
@@ -89,6 +106,7 @@
                 
                 
               </form>
+
             </div>
           </div>
 

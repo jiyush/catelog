@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Input;
 use File;
 use App\Mail\AddListing;
 use Illuminate\Support\Facades\Mail;
+use Redirect;
+use Validator;
+use Image; //Intervention Image
+use App\Images;
+use Illuminate\Support\Facades\Storage; //Laravel Filesystem
 
 class industriesController extends Controller
 {
@@ -39,8 +44,15 @@ class industriesController extends Controller
     	return view('admin.industry.add', compact('categories'))->with('active', 'industries');	
     }
 
-     public function store(Request $request){
+    public function store(Request $request){
 
+        $rules = ['image' => 'array|max:15|size:15'];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
      	
      	$industry = new Industry;
      	
@@ -55,14 +67,43 @@ class industriesController extends Controller
      	$industry->description = $request->description;
      	$industry->address = $request->street.','.$request->city.','.$request->state;
     
-        if($request->image){
-            $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
-            request()->image->move(public_path('images/industries'), $logoName);
-            $path = "/images/industries/".$logoName;
-            $industry->image = $path;
+        // if($request->image){
+        //     $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
+        //     request()->image->move(public_path('images/industries'), $logoName);
+        //     $path = "/images/industries/".$logoName;
+        //     $industry->image = $path;
+        // }
+        $industry->save();
+        if ($request->hasFile('image')) {
+ 
+            foreach($request->file('image') as $file){
+     
+                //get filename with extension
+                $filenamewithextension = $file->getClientOriginalName();
+     
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                
+                //get file extension
+                $extension = $file->getClientOriginalExtension();
+     
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+     
+                Storage::put('public/industries/'. $filenametostore, fopen($file, 'r+'));
+                // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
+     
+                //Resize image here
+                $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                $img = Image::make($thumbnailpath)->resize(500, 200, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($thumbnailpath);
+                Images::create(['ind_id' => $industry->id, 'path' => $thumbnailpath]);
+            }
         }
 
-     	$industry->save();
+     	// $industry->save();
      	return redirect()->route('industry.list');
      }
 

@@ -43,7 +43,7 @@
                                         <span class="text">Edit</span>
                                     </a>
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <form method="post" action="{{ route('category.delete') }}">
                                         <input type="hidden" name="id" value="{{ $category->id }}">
                                         @csrf
@@ -54,7 +54,7 @@
                                         <span class="text">Delete</span>
                                       </button>
                                     </form>
-                                </td>
+                                </td> --}}
                                 
                             </tr>
                         @endforeach
