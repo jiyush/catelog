@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="feature-item type-2">
+                    <div class="feature-item type-2" style="width: 350px; height: 237px;">
                         <div class="icon-box">
                             <i class="flaticon-list"></i>
                         </div>
@@ -173,7 +173,7 @@
     
 
     <!-- categories start-->
-    <section class="categories sp-100-70 bg-dull">
+    {{-- <section class="categories sp-100-70 bg-dull">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -297,7 +297,7 @@ and even premium! Get listed with us and experience the difference!</p>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- categories end -->
 
 

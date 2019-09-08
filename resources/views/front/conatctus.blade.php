@@ -109,9 +109,9 @@
     </section>
     <!-- contact end -->
     <!-- map start-->
-    <div class="map">
+    {{-- <div class="map">
         <div id="theme-map"></div>
-    </div>
+    </div> --}}
     <!-- map end -->
 
 

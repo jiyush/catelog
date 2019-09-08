@@ -25,15 +25,15 @@
                         <ul class="head-contact text-lg-right text-center">
                             <li>
                                 <i class="fa fa-phone"></i>
-                                +123-456-7890
+                                +916385412345, +916385512345
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                info@company.com
+                                help@jcurve.com
                             </li>
                             <li>
                                 <i class="fa fa-map-marker-alt"></i>
-                                432-A2, Park Avenue, US
+                                Daman, 396210
                             </li>
 
                             {{-- <li class="login-sign">
@@ -53,7 +53,7 @@
                         <div class="logo-two logo-wrap">
                             <div class="logo my-1">
                                 <a href="index.html">
-                                    <img src="./images/jcurve2.jpeg">
+                                    <img src="{{ asset('/images/jcurve3.png') }}">
                                 </a>
                             </div>
                         </div>

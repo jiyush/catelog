@@ -20,6 +20,15 @@
                               <div class="col-sm-3 mb-3 mb-sm-0">
                                 <input type="text" id="name" name="filters[name]" value="{{ Request::old('filters[name]') }}" class="form-control form-control-user" id="" placeholder="Company Name">
                               </div>
+                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                <select class="form-control form-control-user" name="filters[type]">
+                                  <option  value="">Select Type</option>
+                                  
+                                  <option value="free"  @if( $filters['type'] == 'free') selected  @endif  >Free</option>
+                                  <option value="paid" @if( $filters['type'] == 'paid') selected  @endif >Paid</option>
+                                </select>
+                                {{-- <input type="text" id="name" name="filters[name]" value="{{ Request::old('filters[name]') }}" class="form-control form-control-user" id="" placeholder="Company Name"> --}}
+                              </div>
                               
                               <button  class="btn btn-warning">Search</button>
                               <a style="margin-left: 10px;" href="{{ route('industry.list') }}" class="btn btn-primary"> Reset</a>
@@ -41,6 +50,7 @@
                     <tr>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Category</th>
                       <th>Phone</th>
                       <!-- <th>Category</th> -->
                       <th colspan="3">Actions</th>
@@ -52,8 +62,8 @@
                             <tr>
                                 <td>{{ $ind->name }}</td>
                                 <td>{{ $ind->email }}</td>
+                                <td>{{ $ind->category_name }}</td>
                                 <td>{{ $ind->phone }}</td>
-                                <!-- <td>{{ $ind->category }}</td> -->
                                 <!-- <td>{{ $ind->email }}</td> -->
                                 <td colspan="">
                                     <a href="{{ route('industry.view', ['id' => $ind->id]) }}" class="btn btn-success btn-icon-split">

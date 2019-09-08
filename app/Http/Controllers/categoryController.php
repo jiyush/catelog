@@ -10,6 +10,13 @@ use App\Mail\AddListing;
 use Illuminate\Support\Facades\Mail;
 use App\Inquiry;
 
+use Redirect;
+use Validator;
+use Image; //Intervention Image
+use App\Images;
+use App\Industry;
+use Illuminate\Support\Facades\Storage; //Laravel Filesystem
+
 class categoryController extends Controller
 {
     public function list(Request $request){
@@ -85,6 +92,79 @@ class categoryController extends Controller
 
     public function submitList(Request $request){
 
+        $rules = [
+                    'image' => 'array|max:5|size:5',
+                    'type' => 'required',
+                    'phone' => 'required|digits:10',
+                    'email' => 'required|email',
+                    'indCat' => 'required'
+                ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        // dd($request->all());
+        
+        $industry = new Industry;
+        
+        $industry->name = $request->indName;
+        $industry->email = $request->email;
+        $industry->category = $request->indCat;
+        $industry->phone = $request->phone;
+        $industry->street = $request->street;
+        $industry->city = $request->city;
+        $industry->state = $request->state;
+        $industry->products = $request->products;;
+        $industry->description = $request->description;
+        $industry->address = $request->street.','.$request->city.','.$request->state;
+        $industry->type = $request->type;
+        $industry->website = $request->website;
+    
+        // if($request->image){
+        //     $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
+        //     request()->image->move(public_path('images/industries'), $logoName);
+        //     $path = "/images/industries/".$logoName;
+        //     $industry->image = $path;
+        // }
+        $industry->save();
+        if ($request->hasFile('image')) {
+ 
+            foreach($request->file('image') as $file){
+     
+                //get filename with extension
+                $filenamewithextension = $file->getClientOriginalName();
+     
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                
+                //get file extension
+                $extension = $file->getClientOriginalExtension();
+     
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.jpg';
+     
+                // $ximg = Image::make( $file );
+
+                Storage::put('public/industries/'. $filenametostore, fopen($file, 'r+'));
+                // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
+     
+                //Resize image here
+                $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                
+                $img = Image::make( $thumbnailpath )
+                ->resize(800, null , function($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->encode('jpg', 85)
+                ->save($thumbnailpath);
+
+                Images::create(['ind_id' => $industry->id, 'path' => $filenametostore]);
+            }
+        }
+
+
         $data = array();
         $data['name'] = $request->indName;
         $data['email'] = $request->email;
@@ -95,7 +175,7 @@ class categoryController extends Controller
         $data['website'] = $request->website;
         $data['keywords'] = $request->keywords;
         $inquiry = Inquiry::create($data);
-        Mail::to($request->email)->send(new AddListing($inquiry));
+        Mail::to('piyush.mobio@gmail.com')->send(new AddListing($inquiry));
         return redirect()->route('root');
     }
 }

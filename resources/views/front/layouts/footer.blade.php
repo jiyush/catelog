@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-12 col-12 mb-60">
                         <div class="company-details">
-                            <img src="{{ asset('/images/jcurve2.jpeg') }}" style="height: 77.23px; width: 215px;" class="foot-logo mb-4" alt="lister">
+                            {{-- <img src="{{ asset('/images/jcurve3.png') }}" style="height: 77.23px; width: 215px;" class="foot-logo mb-4" alt="lister"> --}}
+                            <img src="{{ asset('/images/jcurve3.png') }}"  class="foot-logo mb-4" alt="lister">
                             <p class="pb-2">J Curve is committed to help you find exactly
                                 what you're looking for. Apart from giving you
                                 up-to-date phone numbers and addresses of

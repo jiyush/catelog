@@ -15,7 +15,7 @@
                             <a href="javascript:void(0)">listing</a>
                         </li>
                         <li>
-                            <span class="active">Industries listing</span>
+                            <span class="active">All category</span>
                         </li>
                     </ul>
                 </div>
@@ -75,62 +75,68 @@
                 </form>
             </div>
               
-            {{-- <div class="listing-list-view show-list"> --}}
-            <div class="list-grid-view show-list">
-                <div class="row">
-                    {{-- Industry Listinf start --}}
-
-                    @if(!empty($industries))
-                        @foreach($industries as $industry)
-                            <div class="col-lg-4 col-md-6 col-12 mb-30">
-                                <div class="listing-item p-2" >
-                                    {{-- <div class="img-list"> --}}
-                                        <div class="img-holder">
-                                            <img src="{{ asset($industry->image) }}" alt="list">
-                                        </div>
-                                    {{-- </div> --}}
-                                    <div class="list-content p-2">
-                                        <ul class="ctg-info py-2 mb-3">
-                                            <li>
-                                                Category
-                                            </li>
-                                            <li>
-                                                {{ $industry->category_name }}
-                                            </li>
-                                        </ul>
-                                        <h5 class="mb-2">
-                                            <a href="listing-detail.html">{{ $industry->name }}</a>
-                                        </h5>
-                                        <div style="height: 130px">
-                                            <p>Produsts: {{ $industry->products }}</p>
-                                            <p>Address: {{ $industry->address }}</p>
-                                        </div>
-                                        <ul  class="ctg-info2 pt-2 mt-3 d-flex justify-content-between flex-wrap">
-                                            <li class="mt-1">
-                                                <a href="#">
-                                                    <i class="fa fa-envelope mr-2"></i>{{ $industry->email }}</a>
-                                            </li>
-                                            <li class="mt-1">
-                                                <a href="#">
-                                                    <i class="fa fa-phone mr-2"></i>{{ $industry->phone }}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+           
+            <section class="categories sp-100-70 bg-dull">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="all-title">
+                                <h3 class="sec-title">
+                                    All categories
+                                </h3>
+                                <svg class="title-sep">
+                                    <path fill-rule="evenodd" d="M32.000,13.000 L32.000,7.000 L35.000,7.000 L35.000,13.000 L32.000,13.000 ZM24.000,4.000 L27.000,4.000 L27.000,16.000 L24.000,16.000 L24.000,4.000 ZM16.000,-0.000 L19.000,-0.000 L19.000,20.000 L16.000,20.000 L16.000,-0.000 ZM8.000,4.000 L11.000,4.000 L11.000,16.000 L8.000,16.000 L8.000,4.000 ZM-0.000,7.000 L3.000,7.000 L3.000,13.000 L-0.000,13.000 L-0.000,7.000 Z"
+                                    />
+                                </svg>
+                                <p>If you are thinking of expanding your business; get registered for free
+        and even premium! Get listed with us and experience the difference!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        @if(!empty($categories))
+                    @foreach($categories as $category)
+                        {{-- <div class="list-items2 btn-anim">
+                            <div class="icon-box"  >
+                                <img src="{{ asset($category->path) }}" style="height: 100px" >
+                            </div>
+                            <h5 class="mb-0 mt-3">
+                                <a href="#">{{ $category->name }}</a>
+                            </h5>
+                        </div> --}}
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
+                            <div class="ctg-item">
+                                <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
+                                    <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                    {{-- <i class="apparels"></i> --}}
+                                </div>
+                                <div class="content-box p-4">
+                                    <h5 class="mb-1">
+                                        <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                    </h5>
+                                    {{-- <p class="mb-0">35 Listing</p> --}}
                                 </div>
                             </div>
-
-                        @endforeach
-                    @endif
-                    
-                    {{-- pagination --}}
-                    <div class="col-12 text-center mt-30">
-                        {{ $industries->links() }}
-                        {{-- <a href="#" class="btn btn-one btn-anim" style="background-color: #228ACA !important;color: #fff;">load more</a> --}}
+                        </div>
+                    @endforeach
+                @endif
+                        {{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
+                            <div class="ctg-item">
+                                <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
+                                    <i class="flaticon-map"></i>
+                                </div>
+                                <div class="content-box p-4">
+                                    <h5 class="mb-1">
+                                        <a href="listing-detail.html">destination</a>
+                                    </h5>
+                                    <p class="mb-0">35 Listing</p>
+                                </div>
+                            </div>
+                        </div> --}}
+                        
                     </div>
-                    {{-- end pagination --}}
-                    {{-- Industry Listinf end --}}
                 </div>
-            </div>
+            </section>
             
         </div>
     </div>

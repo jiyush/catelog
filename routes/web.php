@@ -20,8 +20,10 @@ Route::get('/', 'categoryController@show')->name('root');
 Route::get('/addlisting', 'categoryController@addListing')->name('listing.add');
 Route::post('/addlisting', 'categoryController@submitList')->name('listing.submit');
 
-Route::get('/industries', 'industriesController@AllIndustry')->name('industry.all');
+Route::get('/category', 'industriesController@AllIndustry')->name('industry.all');
+Route::get('industries/{id}', 'industriesController@industry')->name('industries');
 Route::get('/about', 'aboutusController@index')->name('about');
+Route::get('/industry/{id}', 'industriesController@detail')->name('industry');
 Route::get('contactus', 'aboutusController@contact')->name('contactus');
 Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.email');
 

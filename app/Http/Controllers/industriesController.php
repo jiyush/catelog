@@ -14,29 +14,35 @@ use Validator;
 use Image; //Intervention Image
 use App\Images;
 use Illuminate\Support\Facades\Storage; //Laravel Filesystem
+use DB;
 
 class industriesController extends Controller
 {
     public function list(Request $request){
-        $filter = $request->get('filters');
-        
-        if(!empty($filter)){
-            $industries = Industry::where(function($q) use ($filter) {
-                if(!empty($filter['name'])){
-                    $q->where('name', 'LIKE', '%'.$filter['name'].'%');
-                }
-                if(!empty($filter['category'])){
-                    $q->whereCategory($filter['category']);
-                }
-                if(!empty($filter['address'])){
-                    $q->where('address', 'LIKE', '%'.$filter['address'].'%');
-                }
-            })->paginate(10);
+        $filters = $request->get('filters');
+        // dd($filters);
+        if(!empty($filters)){
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                ->where(function($q) use ($filters) {
+                    if(!empty($filters['name'])){
+                        $q->where('industries.name', 'LIKE', '%'.$filters['name'].'%');
+                    }
+                    if(!empty($filters['type'])){
+                        $q->whereType($filters['type']);
+                    }
+                    // if(!empty($filters['address'])){
+                    //     $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
+                    // }
+                })
+                ->select('industries.*', 'categories.name as category_name')
+                ->paginate(9);
         }else{
-            $industries = Industry::paginate(10);
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                                    ->select('industries.*', 'categories.name as category_name')
+                                    ->paginate(9);
         }
     	// $industries = Industry::paginate(10);
-    	return view('admin.industry.list', compact('industries'))->with('active', 'industries');
+    	return view('admin.industry.list', compact('industries', 'filters'))->with('active', 'industries');
     }
 
     public function add(Request $request){
@@ -46,7 +52,13 @@ class industriesController extends Controller
 
     public function store(Request $request){
 
-        $rules = ['image' => 'array|max:15|size:15'];
+        $rules = [
+                    'image' => 'array|max:5|size:5',
+                    'type' => 'required',
+                    'phone' => 'required|digits:10',
+                    'email' => 'required|email',
+                    'category' => 'required'
+                ];
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -63,9 +75,11 @@ class industriesController extends Controller
      	$industry->street = $request->street;
      	$industry->city = $request->city;
      	$industry->state = $request->state;
-     	$industry->products = $request->products;
+     	$industry->products = $request->products;;
      	$industry->description = $request->description;
      	$industry->address = $request->street.','.$request->city.','.$request->state;
+        $industry->type = $request->type;
+        $industry->website = $request->site;
     
         // if($request->image){
         //     $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
@@ -88,18 +102,25 @@ class industriesController extends Controller
                 $extension = $file->getClientOriginalExtension();
      
                 //filename to store
-                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+                $filenametostore = $filename.'_'.uniqid().'.jpg';
      
+                // $ximg = Image::make( $file );
+
                 Storage::put('public/industries/'. $filenametostore, fopen($file, 'r+'));
                 // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
      
                 //Resize image here
                 $thumbnailpath = public_path('storage/industries/'.$filenametostore);
-                $img = Image::make($thumbnailpath)->resize(500, 200, function($constraint) {
+                
+                $img = Image::make( $thumbnailpath )
+                ->resize(800, null , function($constraint) {
                     $constraint->aspectRatio();
-                });
-                $img->save($thumbnailpath);
-                Images::create(['ind_id' => $industry->id, 'path' => $thumbnailpath]);
+                    $constraint->upsize();
+                })
+                ->encode('jpg', 85)
+                ->save($thumbnailpath);
+
+                Images::create(['ind_id' => $industry->id, 'path' => $filenametostore]);
             }
         }
 
@@ -182,6 +203,53 @@ class industriesController extends Controller
         }
         // dd($filters);
         return view('front.indListing', compact('industries','categories', 'filters'))->with('active', 'industries');
+    }
+
+    public function industry(Request $request){
+        $filters = $request->get('filters');
+        $categories = Category::find($request->id);
+        // dd('test');
+    
+        if(!empty($filters)){
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                ->join('images', 'industries.id', '=', 'images.ind_id')
+                ->where(function($q) use ($filters) {
+                    if(!empty($filters['name'])){
+                        $q->where('industries.name', 'LIKE', '%'.$filters['name'].'%');
+                    }
+                    if(!empty($filters['address'])){
+                        $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
+                    }
+                    // if(!empty($request->id)){
+                    //     $q->whereCategory($request->id);   
+                    // }
+                })
+                ->whereCategory($request->id)
+                ->select('industries.*', 'categories.name as category_name', 'images.path')
+                ->paginate(9);
+        }else{
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                // ->join('images', 'industries.id', '=', 'images.ind_id')
+                ->whereCategory($request->id)
+                // ->select('industries.*', 'categories.name as category_name', 'images.path')
+                ->select( 'industries.*',
+            DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name'  )
+                ->paginate(9);
+        }
+        // dd($filters);
+        return view('front.industries', compact('industries','categories', 'filters'))->with('active', 'industries');
+    }
+
+    public function detail(Request $request){
+        $industry = Industry::join('categories', 'industries.category','=', 'categories.id')
+                // ->join('images', 'industries.id', '=', 'images.ind_id')
+                ->whereCategory($request->id)
+                // ->select('industries.*', 'categories.name as category_name', 'images.path')
+                ->select( 'industries.*', 'categories.name as category_name'  )
+                ->first();
+
+        $images = Images::where('ind_id', $request->id)->get();
+        return view('front.detail', compact('industry','images'));
     }
 }
 
