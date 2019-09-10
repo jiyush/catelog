@@ -241,15 +241,11 @@ class industriesController extends Controller
     }
 
     public function detail(Request $request){
-        $industry = Industry::join('categories', 'industries.category','=', 'categories.id')
-                // ->join('images', 'industries.id', '=', 'images.ind_id')
-                ->whereCategory($request->id)
-                // ->select('industries.*', 'categories.name as category_name', 'images.path')
-                ->select( 'industries.*', 'categories.name as category_name'  )
-                ->first();
+        
+        $industry = Industry::find($request->id)->first();
+        $category = Category::find($industry->category)->first();
         $images = Images::where('ind_id', $industry->id)->get();
-        // dd($images);
-        return view('front.detail', compact('industry','images'));
+        return view('front.detail', compact('industry','images', 'category'));
     }
 }
 
