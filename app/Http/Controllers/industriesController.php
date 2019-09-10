@@ -247,8 +247,8 @@ class industriesController extends Controller
                 // ->select('industries.*', 'categories.name as category_name', 'images.path')
                 ->select( 'industries.*', 'categories.name as category_name'  )
                 ->first();
-
         $images = Images::where('ind_id', $industry->id)->get();
+        // dd($images);
         return view('front.detail', compact('industry','images'));
     }
 }
