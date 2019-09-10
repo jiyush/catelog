@@ -76,8 +76,9 @@
             </div>
               
            
-            <section class="categories sp-100-70 bg-dull">
-                <div class="container">
+            {{-- <section class="categories sp-100-70 bg-dull"> --}}
+                <section class=" sp-100-70 bg-dull">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="all-title">
@@ -93,33 +94,63 @@
                             </div>
                         </div>
                     </div>
+                     <div class="row container-fluid">
                     <div class="row justify-content-center">
                         @if(!empty($categories))
-                    @foreach($categories as $category)
-                        {{-- <div class="list-items2 btn-anim">
-                            <div class="icon-box"  >
-                                <img src="{{ asset($category->path) }}" style="height: 100px" >
-                            </div>
-                            <h5 class="mb-0 mt-3">
-                                <a href="#">{{ $category->name }}</a>
-                            </h5>
-                        </div> --}}
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                            <div class="ctg-item">
-                                <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
-                                    <img src="{{ asset($category->path) }}" style="height: 100px" >
-                                    {{-- <i class="apparels"></i> --}}
-                                </div>
-                                <div class="content-box p-4">
-                                    <h5 class="mb-1">
-                                        <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
-                                    </h5>
-                                    {{-- <p class="mb-0">35 Listing</p> --}}
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
+                            @if($categories->count() > 8)
+                                
+                                    
+                                        {{-- <div class="listing-detail-slider owl-carousel owl-theme "> --}}
+                                            @foreach($categories as $category)
+                                            
+                                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30 list-slide">
+                                                    <div class="ctg-item">
+                                                        <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
+                                                            <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                                            {{-- <i class="apparels"></i> --}}
+                                                        </div>
+                                                        <div class="content-box p-4">
+                                                            <h5 class="mb-1">
+                                                                <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                                            </h5>
+                                                            {{-- <p class="mb-0">35 Listing</p> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+
+                                            @endforeach
+                                        {{-- </div> --}}
+                                    
+                                
+                                
+                            @else
+                                @foreach($categories as $category)
+                                    {{-- <div class="list-items2 btn-anim">
+                                        <div class="icon-box"  >
+                                            <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                        </div>
+                                        <h5 class="mb-0 mt-3">
+                                            <a href="#">{{ $category->name }}</a>
+                                        </h5>
+                                    </div> --}}
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
+                                        <div class="ctg-item">
+                                            <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
+                                                <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                                {{-- <i class="apparels"></i> --}}
+                                            </div>
+                                            <div class="content-box p-4">
+                                                <h5 class="mb-1">
+                                                    <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                                </h5>
+                                                {{-- <p class="mb-0">35 Listing</p> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endif
                         {{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
                             <div class="ctg-item">
                                 <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">

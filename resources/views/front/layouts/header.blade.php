@@ -4,21 +4,16 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="socials socials-header text-lg-left text-center">
-                            <a href="#">
+                            <a href="https://www.facebook.com/J-Curve-110256443685547">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             <a href="#">
                                 <i class="fab fa-google-plus-g"></i>
                             </a>
-                            <a href="#">
+                            <a href="https://instagram.com/jcurve_india?igshid=1nz2z51io2grh">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-9">

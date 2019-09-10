@@ -6,7 +6,10 @@
                     <div class="col-xl-4 col-lg-12 col-12 mb-60">
                         <div class="company-details">
                             {{-- <img src="{{ asset('/images/jcurve3.png') }}" style="height: 77.23px; width: 215px;" class="foot-logo mb-4" alt="lister"> --}}
-                            <img src="{{ asset('/images/jcurve3.png') }}"  class="foot-logo mb-4" alt="lister">
+                            <div style="height: 61.03px; width: 215px;">
+                            <img  src="{{ asset('/images/jcurve3.png') }}"  class="foot-logo mb-4" >
+                                
+                            </div>
                             <p class="pb-2">J Curve is committed to help you find exactly
                                 what you're looking for. Apart from giving you
                                 up-to-date phone numbers and addresses of
@@ -16,21 +19,21 @@
                                 and we’re adding more every day.
                             </p>
                             <div class="socials mt-4">
-                                <a href="#">
+                                <a href="https://www.facebook.com/J-Curve-110256443685547">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                                 <a href="#">
                                     <i class="fab fa-google-plus-g"></i>
                                 </a>
-                                <a href="#">
+                                <a href="https://instagram.com/jcurve_india?igshid=1nz2z51io2grh">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="#">
+                                {{-- <a href="#">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
                                 <a href="#">
                                     <i class="fab fa-twitter"></i>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>

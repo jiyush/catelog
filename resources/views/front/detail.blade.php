@@ -49,7 +49,7 @@
                         <div class="abt-listing">
                             <ul class="ctg-info centering justify-content-start">
                                 <li>
-                                    <a href="http://maps.google.com/?q={{$industry->address}}">
+                                    <a target="_blank" href="http://maps.google.com/?q={{$industry->address}}">
                                         <i class="fa fa-map-marker-alt mr-2"></i>
                                     {{ $industry->address }}</a>
                                 </li>
@@ -145,12 +145,12 @@
                                     <a href="#">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="#">
+                                    {{-- <a href="#">
                                         <i class="fab fa-linkedin-in"></i>
                                     </a>
                                     <a href="#">
                                         <i class="fab fa-twitter"></i>
-                                    </a>
+                                    </a> --}}
                                     <a href="#">
                                         <i class="fab fa-vine"></i>
                                     </a>
