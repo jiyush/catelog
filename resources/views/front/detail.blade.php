@@ -30,7 +30,7 @@
                 @if(!empty($images))
                     @foreach($images as $image)
                         <div class="list-slide">
-                            <img src="{{ asset('/storage/industries/'.$image->path) }}" alt="listing">
+                            <img src="{{ storage_path('/industries/'.$image->path) }}" alt="listing">
                         </div>
                     @endforeach
                 @endif
