@@ -242,8 +242,8 @@ class industriesController extends Controller
 
     public function detail(Request $request){
         
-        $industry = Industry::find($request->id)->first();
-        $category = Category::find($industry->category)->first();
+        $industry = Industry::find($request->id);
+        $category = Category::find($industry->category);
         $images = Images::where('ind_id', $industry->id)->get();
         return view('front.detail', compact('industry','images', 'category'));
     }
