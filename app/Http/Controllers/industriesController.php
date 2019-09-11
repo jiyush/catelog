@@ -113,10 +113,12 @@ class industriesController extends Controller
                 // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
      
                 //Resize image here
-                // $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                dd($thumbnailpath);
+                // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
                 // $thumbnailpath = $filenametostore->getRealPath();
-                
-                $img = Image::make('/storage/industries/'.$filenametostore)
+                // dd($thumbnailpath);
+                $img = Image::make( $thumbnailpath )
                 ->resize(800, 800 , function($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
