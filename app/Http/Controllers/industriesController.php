@@ -114,7 +114,7 @@ class industriesController extends Controller
      
                 //Resize image here
                 $thumbnailpath = public_path('storage/industries/'.$filenametostore);
-                dd($thumbnailpath);
+                
                 // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
                 // $thumbnailpath = $filenametostore->getRealPath();
                 // dd($thumbnailpath);
