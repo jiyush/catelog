@@ -53,7 +53,7 @@ class industriesController extends Controller
     public function store(Request $request){
 
         $rules = [
-                    'image' => 'array|max:5|size:15',
+                    'image' => 'array|size:12',
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',
@@ -100,25 +100,29 @@ class industriesController extends Controller
                 
                 //get file extension
                 $extension = $file->getClientOriginalExtension();
+
+                $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $filename);
+                $filename = str_replace('-', '', $filename);    
      
                 //filename to store
                 $filenametostore = $filename.'_'.uniqid().'.jpg';
-     
+                // dd($filenametostore);
                 // $ximg = Image::make( $file );
 
-                Storage::put('public/industries/'. $filenametostore, fopen($file, 'r+'));
+                Storage::put('industries/'. $filenametostore, fopen($file, 'r+'));
                 // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
      
                 //Resize image here
                 $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                // $thumbnailpath = $filenametostore->getRealPath();
                 
                 $img = Image::make( $thumbnailpath )
-                ->resize(800, null , function($constraint) {
+                ->resize(800, 800 , function($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
-                ->encode('jpg', 85)
-                ->save($thumbnailpath);
+                ->encode('jpg', 85);
+                $img->save($thumbnailpath);
 
                 Images::create(['ind_id' => $industry->id, 'path' => $filenametostore]);
             }
@@ -172,6 +176,15 @@ class industriesController extends Controller
 
     public function delete(Request $request){
     	$industry = Industry::whereId($request->id)->first();
+        $images = Images::where('ind_id', $industry->id)->get();
+
+        foreach ($images as $image) {
+            // $path = public_path().'/storage/industries/'.$image->path;
+            // dd($path);
+            Storage::delete('/industries/'.$image->path);
+            // dd($image->path);
+        }
+        // dd('Bre');
     	$industry->delete();
     	return redirect()->route('industry.list');	
     }

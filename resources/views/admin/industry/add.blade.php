@@ -92,7 +92,7 @@
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Website</label>
-                    <input type="text" class="form-control" name="site"  required>
+                    <input type="text" class="form-control" name="site"  >
                   </div>
                   {{-- <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Image</label>
