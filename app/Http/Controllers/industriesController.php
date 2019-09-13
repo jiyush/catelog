@@ -81,12 +81,6 @@ class industriesController extends Controller
         $industry->type = $request->type;
         $industry->website = $request->site;
     
-        // if($request->image){
-        //     $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
-        //     request()->image->move(public_path('images/industries'), $logoName);
-        //     $path = "/images/industries/".$logoName;
-        //     $industry->image = $path;
-        // }
         $industry->save();
         if ($request->hasFile('image')) {
  
@@ -118,7 +112,7 @@ class industriesController extends Controller
                 // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
                 // $thumbnailpath = $filenametostore->getRealPath();
                 // dd($thumbnailpath);
-                $img = Image::make( $thumbnailpath )
+                $img = Image::make( $file )
                 ->resize(800, 800 , function($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
