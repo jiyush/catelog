@@ -177,7 +177,8 @@ class industriesController extends Controller
         foreach ($images as $image) {
             // $path = public_path().'/storage/industries/'.$image->path;
             // dd($path);
-            Storage::delete('/industries/'.$image->path);
+            Storage::delete('industries/'.$image->path);
+            // unlink('/var/www/catelog/storage/app/public/industries/'.$image->path);
             // dd($image->path);
         }
         // dd('Bre');
