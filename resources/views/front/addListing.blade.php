@@ -49,11 +49,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <label>Industry Name</label>
-                                <input type="text" id="name" name="indName" class="form-control" value="{{ Request::old('indName') }}" placeholder="Industry Name" required>
+                                <input type="text" id="name" name="name" class="form-control" value="{{ Request::old('name') }}" placeholder="Industry Name" required>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>category</label>
-                                <select class="form-control custom-select" name="indCat" id="categories" required>
+                                <select class="form-control custom-select" name="category" id="categories" required>
                                     <option value="">select categories</option>
                                     @if(!empty($categories))
                                     	@foreach($categories as $category)

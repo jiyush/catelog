@@ -37,9 +37,30 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-60">
+                        <div class="recent-post">
+                            <div class="foot-title">
+                                <h4>useful links</h4>
+                            </div>
+                            <ul class="quick-link">
+                                <li>
+                                    <a href="{{ route('industry.all') }}">listing</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('about') }}">About US</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('contactus') }}">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('listing.add') }}">Add Listing</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     
                 </div>
+
             </div>
         </div>
         <div class="foot-bottom">

@@ -12,10 +12,10 @@
                             <a href="{{ route('root') }}">Home</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">Industries</a>
+                            <a href="{{ route('industry.all') }}">Category</a>
                         </li>
                         <li>
-                            <span class="active">Industries listing</span>
+                            <span class="active">{{ $categories->name }}</span>
                         </li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
     <div class="bg-w sp-100">
         <div class="container">
             <div class="filter-box mb-30">
-                <form method="get" action="{{ route('industry.all') }}">
+                <form method="get" action="{{ route('industries', ['id' => $categories->id]) }}">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <input type="text" name="filters[name]" 
@@ -38,14 +38,14 @@
                              class="form-control"  placeholder="Search by industy">
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="input-wrap">
-                                <i class="fa fa-crosshairs"></i>
-                                <input type="text" name="filters[address]" 
-                                @if(!empty($filters['address']))
-                                    value="{{$filters['address']}}"        
+                            {{-- <div class="input-wrap"> --}}
+                                {{-- <i class="fa fa-crosshairs"></i> --}}
+                                <input type="text" name="filters[products]" 
+                                @if(!empty($filters['products']))
+                                    value="{{$filters['products']}}"        
                                 @endif
-                                class="form-control"  placeholder="Search By Location">
-                            </div>
+                                class="form-control"  placeholder="Search By Produsts">
+                            {{-- </div> --}}
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="input-wrap">
@@ -70,7 +70,7 @@
                 <div class="row">
                     {{-- Industry Listinf start --}}
 
-                    @if(!empty($industries))
+                    @if($industries->count() > 0)
                         @foreach($industries as $industry)
                             {{-- <div class="col-lg-4 col-md-6 col-12 mb-30">
                                 <div class="listing-item p-2" >
@@ -134,7 +134,7 @@
                                         <h5 class="mb-2">
                                             <a href="{{ route('industry', ['id' => $industry->id]) }}">{{ $industry->name }}</a>
                                         </h5>
-                                        <p>{{ $industry->address }}</p>
+                                        {{-- <p>{{ $industry->address }}</p> --}}
                                         <ul class="ctg-info2 pt-2 mt-3 d-flex justify-content-between flex-wrap">
                                             <li class="mt-1">
                                                 <a href="#">
@@ -152,6 +152,9 @@
                             </div>
 
                         @endforeach
+                    @else
+                    <h3 class="text-center">No Industries found</h3>
+
                     @endif
                     
                     {{-- pagination --}}

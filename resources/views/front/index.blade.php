@@ -18,8 +18,8 @@
     <!-- listing start -->
     <section class="bg-w tri-bg sp-100-70 o-hide">
         <div class="container">
-            <div class="list-category-slider owl-carousel owl-theme mb-60">
-                {{-- @if(!empty($categories))
+            {{-- <div class="list-category-slider owl-carousel owl-theme mb-60">
+                @if(!empty($categories))
                     @foreach($categories as $category)
                         <div class="list-items2 btn-anim">
                             <div class="icon-box"  >
@@ -30,10 +30,48 @@
                             </h5>
                         </div>
                     @endforeach
-                @endif --}}
+                @endif
                 
+            </div> --}}
+            <div class="justify-content-center">
+               <p><h4>J curve is commited to help you find  exactly what you are looking for</h4></p>
             </div>
-            <form method="get" action="{{ route('industry.all') }}">
+            <form method="get" action="{{ route('industries') }}">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            <input type="text" name="filters[name]" 
+                            @if(!empty($filters['name']))
+                                value="{{$filters['name']}}"        
+                            @endif
+                             class="form-control"  placeholder="Search by industy">
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            {{-- <div class="input-wrap"> --}}
+                                {{-- <i class="fa fa-crosshairs"></i> --}}
+                                <input type="text" name="filters[products]" 
+                                @if(!empty($filters['products']))
+                                    value="{{$filters['products']}}"        
+                                @endif
+                                class="form-control"  placeholder="Search By Produsts">
+                            {{-- </div> --}}
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            <select class="form-control custom-select" name="category" id="service2" required>
+                                {{-- <option selected disabled>all categories</option> --}}
+                                @if(!empty($categories))
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            <button type="submit" class="btn btn-one btn-anim w-100" style="background-color: #228ACA !important;color: #fff;">
+                                filter now</button>
+                        </div>
+                    </div>
+                </form>
+            {{-- <form method="get" action="{{ route('industry.all') }}">
             <div class="row justify-content-md-center">
                     <div class="col-lg-3 col-md-3">
                         <input type="text" name="filters[name]"  class="form-control"  placeholder="Search by industy">
@@ -55,11 +93,11 @@
                     <div class="col-lg-2 col-md-2">
                         {{-- <button type="submit" class="btn btn-one btn-anim br-5 w-100 mb-30">
                             <i class="fa fa-search"></i> search</button> --}}
-                            <button type="submit" class="btn btn-one" style="background-color: #228ACA !important;color: #fff;">
+                          {{--   <button type="submit" class="btn btn-one" style="background-color: #228ACA !important;color: #fff;">
                             <i class="fa fa-search"></i> search</button>
                     </div>
-            </div>
-        </form>
+            </div> --}}
+        {{-- </form>  --}}
         </div>
     </section>
     <!-- listing start -->

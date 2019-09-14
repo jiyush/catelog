@@ -178,10 +178,12 @@ class industriesController extends Controller
             // $path = public_path().'/storage/industries/'.$image->path;
             // dd($path);
             Storage::delete('industries/'.$image->path);
+            Images::find($image->id)->delete();
             // unlink('/var/www/catelog/storage/app/public/industries/'.$image->path);
             // dd($image->path);
         }
         // dd('Bre');
+        // $$images->destroy();
     	$industry->delete();
     	return redirect()->route('industry.list');	
     }
@@ -217,33 +219,42 @@ class industriesController extends Controller
 
     public function industry(Request $request){
         $filters = $request->get('filters');
-        $categories = Category::find($request->id);
+        if(!empty($request->get('category'))){
+            $catId = $request->get('category');
+        }else{
+            $catId = $request->id;
+        }
+        // dd($catId);
+        $categories = Category::find($catId);
         // dd('test');
     
         if(!empty($filters)){
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
-                ->join('images', 'industries.id', '=', 'images.ind_id')
+                // ->join('images', 'industries.id', '=', 'images.ind_id')
                 ->where(function($q) use ($filters) {
                     if(!empty($filters['name'])){
                         $q->where('industries.name', 'LIKE', '%'.$filters['name'].'%');
                     }
+                    if(!empty($filters['products'])){
+                        // dd($filters['products']);
+                        $q->where('industries.products', 'LIKE', '%'.$filters['products'].'%');
+                    }
                     if(!empty($filters['address'])){
                         $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
                     }
-                    // if(!empty($request->id)){
-                    //     $q->whereCategory($request->id);   
+                    // if(!empty($catId)){
+                    //     $q->whereCategory($catId);   
                     // }
                 })
-                ->whereCategory($request->id)
-                ->select('industries.*', 'categories.name as category_name', 'images.path')
+                ->whereCategory($catId)
+                ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
         }else{
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
                 // ->join('images', 'industries.id', '=', 'images.ind_id')
-                ->whereCategory($request->id)
+                ->whereCategory($catId)
                 // ->select('industries.*', 'categories.name as category_name', 'images.path')
-                ->select( 'industries.*',
-            DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name'  )
+                ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
         }
         // dd($filters);

@@ -12,7 +12,10 @@
                             <a href="{{ route('root') }}">Home</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">Listing</a>
+                            <a href="{{ route('industry.all') }}">Category</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
                         </li>
                         <li>
                             <span class="active">Listing Detail</span>

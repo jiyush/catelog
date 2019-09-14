@@ -93,24 +93,24 @@ class categoryController extends Controller
     public function submitList(Request $request){
 
         $rules = [
-                    'image' => 'array|max:5|size:15',
+                    'image' => 'array|min:12',
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',
-                    'indCat' => 'required'
+                    'category' => 'required'
                 ];
 
         $validator = Validator::make($request->all(), $rules);
+        // dd($request->all());
         if ($validator->fails()){
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        // dd($request->all());
         
         $industry = new Industry;
         
-        $industry->name = $request->indName;
+        $industry->name = $request->name;
         $industry->email = $request->email;
-        $industry->category = $request->indCat;
+        $industry->category = $request->category;
         $industry->phone = $request->phone;
         $industry->street = $request->street;
         $industry->city = $request->city;
@@ -119,14 +119,8 @@ class categoryController extends Controller
         $industry->description = $request->description;
         $industry->address = $request->street.','.$request->city.','.$request->state;
         $industry->type = $request->type;
-        $industry->website = $request->website;
+        $industry->website = $request->site;
     
-        // if($request->image){
-        //     $logoName = $request->id.'.'.request()->image->getClientOriginalExtension();
-        //     request()->image->move(public_path('images/industries'), $logoName);
-        //     $path = "/images/industries/".$logoName;
-        //     $industry->image = $path;
-        // }
         $industry->save();
         if ($request->hasFile('image')) {
  
@@ -140,25 +134,31 @@ class categoryController extends Controller
                 
                 //get file extension
                 $extension = $file->getClientOriginalExtension();
+
+                $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $filename);
+                $filename = str_replace('-', '', $filename);    
      
                 //filename to store
                 $filenametostore = $filename.'_'.uniqid().'.jpg';
-     
+                // dd($filenametostore);
                 // $ximg = Image::make( $file );
 
-                Storage::put('public/industries/'. $filenametostore, fopen($file, 'r+'));
+                Storage::put('industries/'. $filenametostore, fopen($file, 'r+'));
                 // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
      
                 //Resize image here
                 $thumbnailpath = public_path('storage/industries/'.$filenametostore);
                 
-                $img = Image::make( $thumbnailpath )
-                ->resize(800, null , function($constraint) {
+                // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
+                // $thumbnailpath = $filenametostore->getRealPath();
+                // dd($thumbnailpath);
+                $img = Image::make( $file )
+                ->resize(600, 600 , function($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
-                ->encode('jpg', 85)
-                ->save($thumbnailpath);
+                ->encode('jpg', 85);
+                $img->save($thumbnailpath);
 
                 Images::create(['ind_id' => $industry->id, 'path' => $filenametostore]);
             }
@@ -166,9 +166,9 @@ class categoryController extends Controller
 
 
         $data = array();
-        $data['name'] = $request->indName;
+        $data['name'] = $request->name;
         $data['email'] = $request->email;
-        $data['category'] = $request->indCat;
+        $data['category'] = $request->category;
         $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
         $data['description'] = $request->description;
         $data['phone'] = $request->phone;

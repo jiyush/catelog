@@ -12,9 +12,6 @@
                             <a href="{{ route('root') }}">Home</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">listing</a>
-                        </li>
-                        <li>
                             <span class="active">All category</span>
                         </li>
                     </ul>
@@ -27,8 +24,8 @@
     <!-- listings start-->
     <div class="bg-w sp-100">
         <div class="container">
-            <div class="filter-box mb-30">
-                <form method="get" action="{{ route('industry.all') }}">
+            {{-- <div class="filter-box mb-30"> --}}
+                {{-- <form method="get" action="{{ route('industry.all') }}">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <input type="text" name="filters[name]" 
@@ -72,8 +69,8 @@
                                 filter now</button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </form> --}}
+            {{-- </div> --}}
               
            
             {{-- <section class="categories sp-100-70 bg-dull"> --}}
@@ -89,12 +86,11 @@
                                     <path fill-rule="evenodd" d="M32.000,13.000 L32.000,7.000 L35.000,7.000 L35.000,13.000 L32.000,13.000 ZM24.000,4.000 L27.000,4.000 L27.000,16.000 L24.000,16.000 L24.000,4.000 ZM16.000,-0.000 L19.000,-0.000 L19.000,20.000 L16.000,20.000 L16.000,-0.000 ZM8.000,4.000 L11.000,4.000 L11.000,16.000 L8.000,16.000 L8.000,4.000 ZM-0.000,7.000 L3.000,7.000 L3.000,13.000 L-0.000,13.000 L-0.000,7.000 Z"
                                     />
                                 </svg>
-                                <p>If you are thinking of expanding your business; get registered for free
-        and even premium! Get listed with us and experience the difference!</p>
+                                <p>We are committed to help you find exactly what you're looking for. Apart from giving you up-to-date phone numbers and addresses of local businesses across the state, we'll also give you driving directions to get there!</p>
                             </div>
                         </div>
                     </div>
-                     <div class="row container-fluid">
+                     {{-- <div class="row container-fluid"> --}}
                     <div class="row justify-content-center">
                         @if(!empty($categories))
                             @if($categories->count() > 8)

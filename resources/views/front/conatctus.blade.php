@@ -12,8 +12,8 @@
                         <a href="{{ route('root') }}">Home</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">Contact Us</a>
-                    </li>
+                            <span class="active">Contact Us</span>
+                        </li>
                 </ul>
             </div>
         </div>

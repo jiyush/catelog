@@ -86,7 +86,8 @@
                                             <a class="nav-link" href="{{ route('contactus') }}">contact us</a>
                                         </li>
 
-                                        <li class="nav-item d-lg-block d-none">
+                                        {{-- <li class="nav-item d-lg-block d-none"> --}}
+                                        <li class="nav-item">
                                             <a href="{{ route('listing.add') }}" style="color: #228ACA !important" class="btn btn-one btn-anim br-5 px-3 nav-btn">
                                                 <i class="fa fa-plus-circle"></i> add listing
                                             </a>
