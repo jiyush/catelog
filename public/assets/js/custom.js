@@ -302,6 +302,35 @@ Author:         Company Name
     }
   });
 
+  var catsli = $("#category-slider");
+  catsli.owlCarousel({
+    autoplay: true,
+    nav: true,
+    dots: false,
+    autoplayHoverPause: true,
+    margin: 30,
+    loop: true,
+    navText: [
+      '<i class="fa fa-angle-left"></i>',
+      '<i class="fa fa-angle-right"></i>'
+    ],
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      991: {
+        items: 3,
+      },
+      1199: {
+        items: 4,
+      }
+    }
+  });
+
   /*=======================================
     listing sidebar slider
   ======================================= */

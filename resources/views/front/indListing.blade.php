@@ -91,17 +91,18 @@
                         </div>
                     </div>
                      {{-- <div class="row container-fluid"> --}}
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" >
                         @if(!empty($categories))
                             @if($categories->count() > 8)
                                 
-                                    
+                                    {{-- <div class=" px-4"> --}}
+                                        
                                         {{-- <div class="listing-detail-slider owl-carousel owl-theme "> --}}
                                             @foreach($categories as $category)
                                             
                                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30 list-slide">
                                                     <div class="ctg-item">
-                                                        <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
+                                                        <div class="icon-box" style="background-image:url('{{ asset($category->bpath) }}')">
                                                             <img src="{{ asset($category->path) }}" style="height: 100px" >
                                                             {{-- <i class="apparels"></i> --}}
                                                         </div>
@@ -117,6 +118,7 @@
 
                                             @endforeach
                                         {{-- </div> --}}
+                                    {{-- </div> --}}
                                     
                                 
                                 
@@ -169,6 +171,8 @@
     </div>
     <!-- listings end -->
 
+
 @include('front.layouts.footer')
+
 
                     

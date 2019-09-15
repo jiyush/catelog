@@ -30,10 +30,11 @@ class categoryController extends Controller
 
     public function store(Request $request)
     {
-            // $request->validate([
-            //     'category' => 'required',
-            //     'category_logo' => 'required|image',
-            // ]);
+            $request->validate([
+                'category' => 'required',
+                'category_logo' => 'required|image',
+                'bpath' => 'required|image'
+            ]);
         // dd($request->all());
     	$category = new Category;
     	$category->name = $request->category;
@@ -43,6 +44,13 @@ class categoryController extends Controller
             $path = "/images/category/".$logoName;
             $category->path = $path;
         }
+        if($request->bpath){
+            $logoName = $request->category.'.'.request()->bpath->getClientOriginalExtension();
+            request()->bpath->move(public_path('images/bgcategory'), $logoName);
+            $path = "/images/bgcategory/".$logoName;
+            $category->bpath = $path;
+        }
+
     	$category->save();
     	return redirect()->route('category.list');
     }
@@ -65,6 +73,18 @@ class categoryController extends Controller
             request()->category_logo->move(public_path('images/category'), $category_logoName);
             $path = "/images/category/".$category_logoName;
             $category->path = $path;
+        }
+        if(Input::hasFile('bpath')){
+            $delPath = public_path('images/bgcategory/'.$category->bpath);
+            // dd($delPath);
+            if (File::exists($delPath)) { // unlink or remove previous image from folder
+                unlink($delPath);
+            }
+            $bpathName = $request->category.'.'.request()->bpath->getClientOriginalExtension();
+
+            request()->bpath->move(public_path('images/bgcategory'), $bpathName);
+            $path = "/images/bgcategory/".$bpathName;
+            $category->bpath = $path;
         }
     	$category->update();
     	return redirect()->route('category.list');
