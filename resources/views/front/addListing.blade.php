@@ -139,7 +139,7 @@
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <label>Upload Images</label>
-                                <input type="file"  name="image[]" multiple required>
+                                <input type="file"  name="image[]" multiple >
                             </div>
                         </div>
                     

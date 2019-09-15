@@ -102,7 +102,7 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Image</label>
-                    <input type="file"  name="image[]" multiple required>
+                    <input type="file"  name="image[]" multiple>
                   </div>
                 </div>
                 

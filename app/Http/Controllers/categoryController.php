@@ -113,7 +113,7 @@ class categoryController extends Controller
     public function submitList(Request $request){
 
         $rules = [
-                    'image' => 'array|min:12',
+                    'image' => 'sometimes|array|min:12',
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',

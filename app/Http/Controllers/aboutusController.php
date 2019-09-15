@@ -24,7 +24,7 @@ class aboutusController extends Controller
     	$contact->email = $request->email;
     	$contact->phone = $request->phone;
     	$contact->comment = $request->comment;
-    	Mail::to('jiiyush@gmail.com')->send(new Contact($contact));
+    	Mail::to('selfmade.meet@gmail.com')->send(new Contact($contact));
     	return redirect()->route('root');
     }
 }
