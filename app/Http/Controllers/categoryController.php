@@ -195,7 +195,7 @@ class categoryController extends Controller
         $data['website'] = $request->website;
         $data['keywords'] = $request->keywords;
         $inquiry = Inquiry::create($data);
-        Mail::to('jiiyush@gmail.com')->send(new AddListing($inquiry));
+        Mail::to('selfmade.meet@gmail.com')->send(new AddListing($inquiry));
         return redirect()->route('root');
     }
 }

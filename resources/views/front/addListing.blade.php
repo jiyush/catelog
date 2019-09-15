@@ -130,7 +130,7 @@
                                     
                                     <div class="col-lg-6 col-12">
                                         <label>website</label>
-                                        <input type="text" name="website" value="{{ Request::old('website') }}" id="website" class="form-control" placeholder="website" required>
+                                        <input type="text" name="website" value="{{ Request::old('website') }}" id="website" class="form-control" placeholder="website" >
                                     </div>
                                     
                                 </div>

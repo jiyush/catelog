@@ -72,13 +72,13 @@
                         <h4 class="title-sep3 mb-30">
                             description
                         </h4>
-                        <p>Officia irure in pariatur deserunt proident Lorem. Non ullamco ipsum adipisicing nisi do. Excepteur
-                            ea amet ex dolor nisi laborum non anim non velit aute culpa nisi. Officia nostrud enim aliquip
-                            ea ad occaecat. Irure magna consectetur eiusmod eu officia voluptate duis pariatur quis et. Incididunt
-                            in deserunt duis adipisicing commodo sit in voluptate.</p>
-                        <p>Velit cupidatat voluptate eu do ullamco est incididunt deserunt. Duis ut aliquip quis nostrud laboris
-                            labore irure fugiat non ea pariatur. Nostrud culpa Lorem nulla excepteur et ut eu amet qui consequat
-                            adipisicing nulla tesquwdfe eu, pr etium quis, sem.</p>
+                        <p>{{ $industry->description }}</p>
+                    </div>
+                    <div class="mb-60">
+                        <h4 class="title-sep3 mb-30">
+                            Products
+                        </h4>
+                        <p>{{ $industry->products }}</p>
                     </div>
                     
                     
