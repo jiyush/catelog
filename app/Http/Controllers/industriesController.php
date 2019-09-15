@@ -53,7 +53,7 @@ class industriesController extends Controller
     public function store(Request $request){
 
         $rules = [
-                    'image' => 'array|size:12',
+                    'image' => 'array|min:12',
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',
