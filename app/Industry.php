@@ -12,6 +12,6 @@ class Industry extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'category','phone', 'address', 'state','city', 'street','description', 'products',
+        'name', 'email', 'category','phone', 'address', 'state','city', 'street','description', 'products', 'webiste'
     ];
 }
