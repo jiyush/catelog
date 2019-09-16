@@ -27,7 +27,7 @@
     </a>
 
     <!-- Preloader start-->
-    <div class="preloader">
+    {{-- <div class="preloader">
         <div class="loader-inner">
             <div class="dash one">
                 <i class="fa fa-map-marker-alt"></i>
@@ -39,4 +39,4 @@
                 <i class="fa fa-map-marker-alt"></i>
             </div>
         </div>
-    </div>
+    </div> --}}
