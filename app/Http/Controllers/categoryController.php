@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Storage; //Laravel Filesystem
 
 class categoryController extends Controller
 {
+    public $industry;
+
+    public function __construct(Industry $industry){
+        $this->industry = $industry;
+    }
+
     public function list(Request $request){
     	$categories = Category::paginate(5);
     	return view('admin.category.list', compact('categories'))->with('active', 'category');
@@ -64,9 +70,11 @@ class categoryController extends Controller
     	$category = Category::whereId($request->id)->first();
     	$category->name = $request->category;
         if(Input::hasFile('category_logo')){
-            $delPath = public_path('images/category/$category->path');
-            if (File::exists($delPath)) { // unlink or remove previous image from folder
-                unlink($delPath);
+            if(!empty($category->path)){
+                $delPath = public_path('images/category/'.$category->path);
+                if (File::exists($delPath)) { // unlink or remove previous image from folder
+                    unlink($delPath);
+                }
             }
             $category_logoName = $request->category.'.'.request()->category_logo->getClientOriginalExtension();
 
@@ -75,10 +83,12 @@ class categoryController extends Controller
             $category->path = $path;
         }
         if(Input::hasFile('bpath')){
-            $delPath = public_path('images/bgcategory/'.$category->bpath);
-            // dd($delPath);
-            if (File::exists($delPath)) { // unlink or remove previous image from folder
-                unlink($delPath);
+            if(!empty($category->bpath)){
+                $delPath = public_path('images/bgcategory/'.$category->bpath);
+                // dd($delPath);
+                if (File::exists($delPath)) { // unlink or remove previous image from folder
+                    unlink($delPath);
+                }
             }
             $bpathName = $request->category.'.'.request()->bpath->getClientOriginalExtension();
 
@@ -113,7 +123,7 @@ class categoryController extends Controller
     public function submitList(Request $request){
 
         $rules = [
-                    'image' => 'sometimes|array|min:12',
+                    // 'image' => 'sometimes|array|min:12',
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',
@@ -126,63 +136,7 @@ class categoryController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         
-        $industry = new Industry;
-        
-        $industry->name = $request->name;
-        $industry->email = $request->email;
-        $industry->category = $request->category;
-        $industry->phone = $request->phone;
-        $industry->street = $request->street;
-        $industry->city = $request->city;
-        $industry->state = $request->state;
-        $industry->products = $request->products;;
-        $industry->description = $request->description;
-        $industry->address = $request->street.','.$request->city.','.$request->state;
-        $industry->type = $request->type;
-        $industry->website = $request->site;
-    
-        $industry->save();
-        if ($request->hasFile('image')) {
- 
-            foreach($request->file('image') as $file){
-     
-                //get filename with extension
-                $filenamewithextension = $file->getClientOriginalName();
-     
-                //get filename without extension
-                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-                
-                //get file extension
-                $extension = $file->getClientOriginalExtension();
-
-                $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $filename);
-                $filename = str_replace('-', '', $filename);    
-     
-                //filename to store
-                $filenametostore = $filename.'_'.uniqid().'.jpg';
-                // dd($filenametostore);
-                // $ximg = Image::make( $file );
-
-                Storage::put('industries/'. $filenametostore, fopen($file, 'r+'));
-                // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
-     
-                //Resize image here
-                $thumbnailpath = public_path('storage/industries/'.$filenametostore);
-                
-                // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
-                // $thumbnailpath = $filenametostore->getRealPath();
-                // dd($thumbnailpath);
-                $img = Image::make( $file )
-                ->resize(600, 600 , function($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                })
-                ->encode('jpg', 85);
-                $img->save($thumbnailpath);
-
-                Images::create(['ind_id' => $industry->id, 'path' => $filenametostore]);
-            }
-        }
+        $ind = $this->industry->add($request);
 
 
         $data = array();

@@ -134,31 +134,6 @@
                                     {{ $industry->website }}
                                 </li>
                             </ul>
-                            <div class="socials sidebar-socials mt-3 mb-30">
-                                <div class="side-icon">
-                                    <i class="fa fa-share-alt"></i>
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-google-plus-g"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    {{-- <a href="#">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a> --}}
-                                    <a href="#">
-                                        <i class="fab fa-vine"></i>
-                                    </a>
-                                </div>
-                            </div>
                             
                         </div>
                         

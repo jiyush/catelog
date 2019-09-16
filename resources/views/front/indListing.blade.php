@@ -22,8 +22,8 @@
     {{-- end banner --}}
 
     <!-- listings start-->
-    <div class="bg-w sp-100">
-        <div class="container">
+    {{-- <div class="bg-w sp-100">
+        <div class="container"> --}}
             {{-- <div class="filter-box mb-30"> --}}
                 {{-- <form method="get" action="{{ route('industry.all') }}">
                     <div class="row">
@@ -74,9 +74,9 @@
               
            
             {{-- <section class="categories sp-100-70 bg-dull"> --}}
-                <section class=" sp-100-70 bg-dull">
+                <section class="bg-dull sp-100-70">
                 <div class="container-fluid">
-                    <div class="row">
+                  <div class="row">
                         <div class="col-12">
                             <div class="all-title">
                                 <h3 class="sec-title">
@@ -89,24 +89,23 @@
                                 <p>We are committed to help you find exactly what you're looking for. Apart from giving you up-to-date phone numbers and addresses of local businesses across the state, we'll also give you driving directions to get there!</p>
                             </div>
                         </div>
-                    </div>
-                     {{-- <div class="row container-fluid"> --}}
-                    <div class="row justify-content-center" >
+                    </div>  
+                     <div class="justify-content-center ">
+                    
                         @if(!empty($categories))
-                            @if($categories->count() > 8)
-                                
-                                    {{-- <div class=" px-4"> --}}
-                                        
-                                        {{-- <div class="listing-detail-slider owl-carousel owl-theme "> --}}
+                            @if($categories->count() > 4)
+                                <div class="bg-w sp-100">
+                                    <div class="container-fluid">
+                                        <div  id="category-slider" class="owl-carousel owl-theme px-8">
                                             @foreach($categories as $category)
-                                            
-                                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30 list-slide">
+                                            {{-- class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30 " --}}
+                                                <div >
                                                     <div class="ctg-item">
-                                                        <div class="icon-box" style="background-image:url('{{ asset($category->bpath) }}')">
-                                                            <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                                        <div class="icon-box " style="background-image:url('{{ asset($category->bpath) }}'); width: 301px; height: 220px; justify-content: center; display: flex;">
+                                                            <img src="{{ asset($category->path) }}"  style="width: 100px; height: 100px">
                                                             {{-- <i class="apparels"></i> --}}
                                                         </div>
-                                                        <div class="content-box p-4">
+                                                        <div class="content-box p-4 ">
                                                             <h5 class="mb-1">
                                                                 <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                                             </h5>
@@ -117,58 +116,40 @@
                                             
 
                                             @endforeach
-                                        {{-- </div> --}}
-                                    {{-- </div> --}}
-                                    
-                                
-                                
-                            @else
-                                @foreach($categories as $category)
-                                    {{-- <div class="list-items2 btn-anim">
-                                        <div class="icon-box"  >
-                                            <img src="{{ asset($category->path) }}" style="height: 100px" >
                                         </div>
-                                        <h5 class="mb-0 mt-3">
-                                            <a href="#">{{ $category->name }}</a>
-                                        </h5>
-                                    </div> --}}
+                                        </div>
+                                    </div>
+                            @else
+                            <div class="bg-w sp-100">
+                                
+                            <div class="row">
+                                
+                                @foreach($categories as $category)
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
                                         <div class="ctg-item">
                                             <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
                                                 <img src="{{ asset($category->path) }}" style="height: 100px" >
-                                                {{-- <i class="apparels"></i> --}}
                                             </div>
                                             <div class="content-box p-4">
                                                 <h5 class="mb-1">
                                                     <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                                 </h5>
-                                                {{-- <p class="mb-0">35 Listing</p> --}}
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
+                            </div>
+                            </div>
                             @endif
                         @endif
-                        {{-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                            <div class="ctg-item">
-                                <div class="icon-box" style="background-image:url('assets/img/home/cat1.jpg')">
-                                    <i class="flaticon-map"></i>
-                                </div>
-                                <div class="content-box p-4">
-                                    <h5 class="mb-1">
-                                        <a href="listing-detail.html">destination</a>
-                                    </h5>
-                                    <p class="mb-0">35 Listing</p>
-                                </div>
-                            </div>
-                        </div> --}}
-                        
                     </div>
+                  
                 </div>
             </section>
             
-        </div>
-    </div>
+    {{--     </div>
+    </div> --}}
     <!-- listings end -->
 
 
