@@ -149,17 +149,17 @@ class categoryController extends Controller
         $ind = $this->industry->add($request);
 
 
-        $data = array();
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['category'] = $request->category;
-        $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
-        $data['description'] = $request->description;
-        $data['phone'] = $request->phone;
-        $data['website'] = $request->website;
-        $data['keywords'] = $request->keywords;
-        $inquiry = Inquiry::create($data);
-        Mail::to('selfmade.meet@gmail.com')->send(new AddListing($inquiry));
+        // $data = array();
+        // $data['name'] = $request->name;
+        // $data['email'] = $request->email;
+        // $data['category'] = $request->category;
+        // $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
+        // $data['description'] = $request->description;
+        // $data['phone'] = $request->phone;
+        // $data['website'] = $request->website;
+        // $data['keywords'] = $request->keywords;
+        // $inquiry = Inquiry::create($data);
+        // Mail::to('selfmade.meet@gmail.com')->send(new AddListing($inquiry));
         return redirect()->route('root');
     }
 }
