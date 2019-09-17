@@ -43,21 +43,21 @@
                             @if(!empty($filters['name']))
                                 value="{{$filters['name']}}"        
                             @endif
-                             class="form-control"  placeholder="Search by industy">
+                             class="form-control" style="border-radius: 25px;" placeholder="Search by industy">
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            {{-- <div class="input-wrap"> --}}
-                                {{-- <i class="fa fa-crosshairs"></i> --}}
+                            <div class="input-wrap">
+                                {{--  <i class="fa fa-crosshairs"></i> --}}
                                 <input type="text" name="filters[products]" 
                                 @if(!empty($filters['products']))
                                     value="{{$filters['products']}}"        
                                 @endif
-                                class="form-control"  placeholder="Search By Produsts">
-                            {{-- </div> --}}
+                                class="form-control" style="border-radius: 25px;"  placeholder="Search By Produsts">
+                            </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <select class="form-control custom-select" name="category" id="service2" required>
-                                {{-- <option selected disabled>all categories</option> --}}
+                            <select class="form-control" name="category" id="service2" style="border-radius: 25px;" required>
+                                <option value="">all categories</option>
                                 @if(!empty($categories))
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>

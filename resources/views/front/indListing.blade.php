@@ -107,7 +107,7 @@
                                                         </div>
                                                         <div class="content-box p-4 ">
                                                             <h5 class="mb-1">
-                                                                <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                                                <a href="{{ route('subcategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                                             </h5>
                                                             {{-- <p class="mb-0">35 Listing</p> --}}
                                                         </div>
@@ -132,7 +132,7 @@
                                             </div>
                                             <div class="content-box p-4">
                                                 <h5 class="mb-1">
-                                                    <a href="{{ route('industries', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                                    <a href="{{ route('subcategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                                 </h5>
                                                 
                                             </div>

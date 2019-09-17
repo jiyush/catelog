@@ -179,14 +179,15 @@ class industriesController extends Controller
     }
 
     public function industry(Request $request){
-        $filters = $request->get('filters');
-        if(!empty($request->get('category'))){
-            $catId = $request->get('category');
-        }else{
-            $catId = $request->id;
-        }
+        // $filters = $request->get('filters');
+        // if(!empty($request->get('category'))){
+        //     $catId = $request->get('category');
+        // }else{
+        //     $catId = $request->id;
+        // }
         // dd($catId);
-        $categories = Category::find($catId);
+        $id =$request->id;
+        $categories = SubCategory::find($id);
         // dd('test');
     
         if(!empty($filters)){
@@ -207,13 +208,13 @@ class industriesController extends Controller
                     //     $q->whereCategory($catId);   
                     // }
                 })
-                ->whereCategory($catId)
+                ->where('subcategory',$id)
                 ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
         }else{
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
                 // ->join('images', 'industries.id', '=', 'images.ind_id')
-                ->whereCategory($catId)
+                ->where('subcategory',$id)
                 // ->select('industries.*', 'categories.name as category_name', 'images.path')
                 ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
@@ -228,6 +229,12 @@ class industriesController extends Controller
         $category = Category::find($industry->category);
         $images = Images::where('ind_id', $industry->id)->get();
         return view('front.detail', compact('industry','images', 'category'));
+    }
+
+    public function subcategory(Request $request){
+        $subcategory = SubCategory::where('category_id', $request->id)->get();
+        $categories = Category::where('id',$request->id)->first();
+        return view('front.sub', compact('subcategory', 'categories'));
     }
 }
 
