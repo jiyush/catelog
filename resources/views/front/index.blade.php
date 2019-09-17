@@ -114,16 +114,7 @@
                         <div class="icon-box">
                             <i class="flaticon-list-1"></i>
                         </div>
-                        <h2 class="count c-theme" data-count="5256">0</h2>
-                        <p>total listing</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
-                    <div class="counter-box">
-                        <div class="icon-box">
-                            <i class="flaticon-team"></i>
-                        </div>
-                        <h2 class="count c-theme" data-count="1250">0</h2>
+                        <h2 class="count c-theme" data-count="{{ $count['indCount'] }}">{{ $count['indCount'] }}</h2>
                         <p>total listing</p>
                     </div>
                 </div>
@@ -132,8 +123,18 @@
                         <div class="icon-box">
                             <i class="flaticon-trophy"></i>
                         </div>
-                        <h2 class="count c-theme" data-count="160">0</h2>
-                        <p>total listing</p>
+                        <h2 class="count c-theme" data-count="{{ $count['paidCount'] }}">0</h2>
+                        <p>Piad User</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
+                    <div class="counter-box">
+                        <div class="icon-box">
+
+                            <i class="flaticon-team"></i>
+                        </div>
+                        <h2 class="count c-theme" data-count="{{ $count['catCount'] }}">0</h2>
+                        <p>Categories</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
@@ -141,8 +142,8 @@
                         <div class="icon-box">
                             <i class="flaticon-appointment"></i>
                         </div>
-                        <h2 class="count c-theme" data-count="12">0</h2>
-                        <p>total listing</p>
+                        <h2 class="count c-theme" data-count="4">0</h2>
+                        <p>Packages</p>
                     </div>
                 </div>
             </div>

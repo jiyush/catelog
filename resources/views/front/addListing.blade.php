@@ -9,10 +9,7 @@
                     <h3>add listing</h3>
                     <ul class="banner-link text-center">
                         <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">listing</a>
+                            <a href="{{ route('root') }}">Home</a>
                         </li>
                         <li>
                             <span class="active">add listing</span>
@@ -51,15 +48,21 @@
                                 <label>Industry Name</label>
                                 <input type="text" id="name" name="name" class="form-control" value="{{ Request::old('name') }}" placeholder="Industry Name" required>
                             </div>
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-3 col-12">
                                 <label>category</label>
-                                <select class="form-control custom-select" name="category" id="categories" required>
+                                <select class="form-control custom-select" name="category" id="category" required>
                                     <option value="">select categories</option>
                                     @if(!empty($categories))
                                     	@foreach($categories as $category)
                                     		<option value="{{ $category->id }}" >{{ $category->name }}</option>
                                     	@endforeach
                                     @endif
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <label>Subcategory</label>
+                                <select class="form-control custom-select" name="subcategory" id="subcategory" required>
+                                    <option value="">select ubcategories</option>
                                 </select>
                             </div>
                             <div class="col-md-6 col-12">
@@ -185,6 +188,30 @@
     </div>
     </section>
     <!-- add-list end -->
-    
-
 @include('front.layouts.footer')
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#category").change(function() {
+        var id = this.value;
+        var path = '{{route('getsub')}}'
+        $.ajax({
+           type:'GET',
+           url : path+'/'+id,
+           data: '',
+           success:function(data) {
+              $("#subcategory").attr('disabled', false);
+              $("#subcategory option").remove();
+              $.each(data,function(key, value)
+              {
+                // console.log('key', key);
+                // console.log('value', value.id);
+                  $("#subcategory").append('<option value=' + value.id + '>' + value.name + '</option>');
+              });
+              console.log(data);
+           }
+        });
+        // console.log(path);
+    });
+  });
+</script>    

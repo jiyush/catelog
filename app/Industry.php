@@ -32,6 +32,7 @@ class Industry extends Model
         $industry->name = $request->name;
         $industry->email = $request->email;
         $industry->category = $request->category;
+        $industry->subcategory = $request->subcategory;
         $industry->phone = $request->phone;
         $industry->street = $request->street;
         $industry->city = $request->city;

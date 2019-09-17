@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <span class="fa fa-phone"></span>
-                                            <input type="text" id="phn" name="phone" class="form-control" placeholder="Enter Name" required>
+                                            <input type="text" id="phn" name="phone" class="form-control" placeholder="Enter Number" required>
                                         </div>
                                         {{-- <div class="col-md-6 col-12">
                                             <span class="fa fa-edit"></span>
@@ -69,15 +69,15 @@
                                 <ul class="contact-info mt-4">
                                     <li>
                                         <i class="fa fa-phone"></i>
-                                        6385412345, 6385512345
+                                        7567825768
                                     </li>
                                     <li>
                                         <i class="fa fa-envelope"></i>
-                                        help@jcurve.com
+                                        jcurveindia@gmail.com
                                     </li>
                                     <li>
                                         <i class="fa fa-map-marker-alt"></i>
-                                         Daman, 396210
+                                         Daman, 396191
                                     </li>
                                 </ul>
                                 <div class="socials contact-social">

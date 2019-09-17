@@ -102,6 +102,7 @@ class categoryController extends Controller
 
     public function delete(Request $request){
     	$category = Category::whereId($request->id)->first();
+        Industry::where('category', $category->id)->delete();
         $delPath = public_path('images/category/$category->path');
         if (File::exists($delPath)) { // unlink or remove previous image from folder
             unlink($delPath);
@@ -111,8 +112,17 @@ class categoryController extends Controller
     }
 
     public function show(Request $request){
+
         $categories = Category::all();
-        return view('front.index', compact('categories'))->with('active', 'home');
+        $catCount = $categories->count();
+        $indCount = Industry::all()->count();
+        $paidCount = Industry::where('type','=', 'paid')->count();
+        $count = array();
+        $count['catCount'] = $catCount;
+        $count['indCount'] = $indCount;
+        $count['paidCount'] = $paidCount;
+
+        return view('front.index', compact('categories', 'count'))->with('active', 'home');
     }
 
     public function addListing(Request $request){

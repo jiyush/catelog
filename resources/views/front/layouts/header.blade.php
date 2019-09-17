@@ -20,15 +20,15 @@
                         <ul class="head-contact text-lg-right text-center">
                             <li>
                                 <i class="fa fa-phone"></i>
-                                +916385412345, +916385512345
+                                +917567825768
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                help@jcurve.com
+                                jcurveindia@gmail.com
                             </li>
                             <li>
                                 <i class="fa fa-map-marker-alt"></i>
-                                Daman, 396210
+                                Vapi, 396191
                             </li>
 
                             {{-- <li class="login-sign">

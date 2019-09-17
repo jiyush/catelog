@@ -14,6 +14,15 @@
           </h5>
             </div>
             <div class="card-body">
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
               <form action="{{ route('industry.update') }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <input type="hidden" name="id" value="{{ $industry->id }}">
@@ -29,7 +38,7 @@
                 </div>
               
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
                     <label for="category">Company Category</label>
                     <select id="category" name="category" class="form-control form-control-user">
                       <option>Select Category</option>
@@ -44,7 +53,22 @@
                       @endif
                     </select>
                   </div>
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label for="category">Company SubCategory</label>
+                    <select id="subcategory" name="subcategory" class="form-control form-control-user">
+                      <option>Select SubCategory</option>
+                      @if(!empty($sub))
+                          @foreach($sub as $s)
+                              @if($s->id == $industry->subcategory)
+                                <option value="{{ $s->id }}" selected>{{ $s->name }}</option>
+                              @else
+                                <option value="{{ $s->id }}">{{ $s->name }}</option>
+                              @endif
+                          @endforeach
+                      @endif
+                    </select>
+                  </div>
+                  <div class="col-sm-4 mb-3 mb-sm-0">
                     <label for="phone">Company Phone</label>
                     <input type="number" name="phone" value="{{ $industry->phone }}" class="form-control form-control-user" id="phone" placeholder="Company Phone">
                   </div>
@@ -79,6 +103,20 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="type">Listing Type</label>
+                    <select id="type" name="type" class="form-control form-control-user" required>
+                          <option selected value="">Select Type</option>
+                          <option value="free" {{ $industry->type = 'free' ? 'selected' : ''  }}>Free</option>
+                          <option value="paid" {{ $industry->type = 'paid' ? 'selected' : ''  }}>Paid</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="products" >Website</label>
+                    <input type="text" value="{{ $industry->website }}" class="form-control" name="website"  >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="products" >Image</label>
                     <input type="file" name="image">
                   </div>
@@ -99,5 +137,31 @@
 
         </div>
         <!-- /.container-fluid -->
-
+@section('externaljs')
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#category").change(function() {
+        var id = this.value;
+        var path = '{{route('getsub')}}'
+        $.ajax({
+           type:'GET',
+           url : path+'/'+id,
+           data: '',
+           success:function(data) {
+              $("#subcategory").attr('disabled', false);
+              $("#subcategory option").remove();
+              $.each(data,function(key, value)
+              {
+                // console.log('key', key);
+                // console.log('value', value.id);
+                  $("#subcategory").append('<option value=' + value.id + '>' + value.name + '</option>');
+              });
+              console.log(data);
+           }
+        });
+        // console.log(path);
+    });
+  });
+</script>
+@endsection
 @endsection

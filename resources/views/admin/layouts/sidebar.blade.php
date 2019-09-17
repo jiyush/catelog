@@ -60,6 +60,21 @@
       <hr class="sidebar-divider">
 
       <!-- Nav Item - Categories-->
+      <li   @if(!empty($active) && $active == 'subcategory' ) 
+                             class="nav-item active" 
+                             @else
+                             class="nav-item" 
+                           @endif 
+       >
+        <a class="nav-link" href="{{ route('sub.list') }}">
+          <i class="fas fa-fw fa-list-alt "></i>
+          <span>SubCategory</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Categories-->
       <li   @if(!empty($active) && $active == 'inquiry' ) 
                              class="nav-item active" 
                              @else

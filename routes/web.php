@@ -27,6 +27,7 @@ Route::get('/industry/{id}', 'industriesController@detail')->name('industry');
 Route::get('contactus', 'aboutusController@contact')->name('contactus');
 Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.email');
 
+Route::get('/getsub/{id?}', 'SubCategoryController@getsub')->name('getsub');
 
 
 //Admin Login
@@ -50,6 +51,15 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 	Route::post('/category/update', 'categoryController@update')->name('category.update');
 	Route::post('/category/delete', 'categoryController@delete')->name('category.delete');
 	Route::get('category/show', 'categoryController@show')->name('category.show');
+
+	// Sub category
+	Route::get('/subcategory', 'SubCategoryController@list')->name('sub.list');
+	Route::get('/subcategory/add', 'SubCategoryController@add')->name('sub.add');
+	Route::post('/subcategory/store', 'SubCategoryController@store')->name('sub.store');
+	Route::get('/subcategory/edit/{id}', 'SubCategoryController@edit')->name('sub.edit');
+	Route::post('/subcategory/update', 'SubCategoryController@update')->name('sub.update');
+	Route::post('/subcategory/delete', 'SubCategoryController@delete')->name('sub.delete');
+
 
 	//industries
 	Route::get('/industries', 'industriesController@list')->name('industry.list');

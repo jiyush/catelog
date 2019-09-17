@@ -15,6 +15,7 @@ use Image; //Intervention Image
 use App\Images;
 use Illuminate\Support\Facades\Storage; //Laravel Filesystem
 use DB;
+use App\SubCategory;
 
 class industriesController extends Controller
 {
@@ -54,7 +55,8 @@ class industriesController extends Controller
 
     public function add(Request $request){
     	$categories = Category::all();
-    	return view('admin.industry.add', compact('categories'))->with('active', 'industries');	
+        // $sub = SubCategory::all();
+    	return view('admin.industry.add', compact('categories', 'sub'))->with('active', 'industries');	
     }
 
     public function store(Request $request){
@@ -89,16 +91,32 @@ class industriesController extends Controller
     	$industry = Industry::whereId($request->id)->first();
     	$category = Category::whereId($industry->category)->first();
     	$categories = Category::all();
-    	return view('admin.industry.edit', compact('industry', 'category', 'categories'))->with('active', 'industries');	
+        $sub = SubCategory::where('category_id', $category->id)->get();
+    	return view('admin.industry.edit', compact('industry', 'category', 'sub','categories'))->with('active', 'industries');	
     }
 
     public function update(Request $request){
+
+        $rules = [
+                    // 'image' => 'sometimes|array|min:12',
+                    'type' => 'required',
+                    'phone' => 'required|digits:10',
+                    'email' => 'required|email',
+                    'category' => 'required',
+                    'subcategory' => 'required'
+                ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
     	$industry = Industry::whereId($request->id)->first();
      	
      	$industry->name = $request->name;
      	$industry->email = $request->email;
      	$industry->category = $request->category;
+        $industry->subcategory = $request->subcategory;
      	$industry->phone = $request->phone;
      	$industry->street = $request->street;
      	$industry->city = $request->city;
@@ -106,17 +124,8 @@ class industriesController extends Controller
      	$industry->products = $request->products;
      	$industry->description = $request->description;
      	$industry->address = $request->street.','.$request->city.','.$request->state;
-        if(Input::hasFile('image')){
-            $delPath = public_path('images/industries/$industry->id');
-            if (File::exists($delPath)) { // unlink or remove previous image from folder
-                unlink($delPath);
-            }
-            $imageName = $request->id.'.'.request()->image->getClientOriginalExtension();
-
-            request()->image->move(public_path('images/industries'), $imageName);
-            $path = "/images/industries/".$imageName;
-            $industry->image = $path;
-        }
+        $industry->type = $request->type;
+        $industry->website = $request->website;
      	$industry->update();
      	return redirect()->route('industry.list');
     }
