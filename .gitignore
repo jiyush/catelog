@@ -2,6 +2,9 @@
 /public/hot
 public/images/category/
 public/images/bgcategory/
+public/images/industries/
+public/phpmyadmin
+phpmyadmin
 /public/storage
 /storage/*.key
 /vendor
@@ -11,3 +14,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.gitignore
