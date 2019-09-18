@@ -10,13 +10,13 @@
                             <img  src="{{ asset('/images/jcurve3.png') }}"  class="foot-logo mb-4" >
                                 
                             </div>
-                            <p class="pb-2">J Curve is committed to help you find exactly
-                                what you're looking for. Apart from giving you
-                                up-to-date phone numbers and addresses of
-                                local businesses and industries across the
-                                state, we'll also give you driving directions to
-                                get there! There are more than 5000 listings
-                                and we’re adding more every day.
+                            <p class="pb-2">We are committed to help you find exactly what you're
+                            looking for. We organise all genuine information and
+                            make it useful in growing your business. Promote your
+                            business online, securely and conveniently from
+                            the comfort of your home or office in leading
+                            local business search engine and get the
+                            J Curve in your business!
                             </p>
                             <div class="socials mt-4">
                                 <a href="https://www.facebook.com/J-Curve-110256443685547">
@@ -58,6 +58,7 @@
                             </ul>
                         </div>
                     </div>
+                    
                     
                 </div>
 

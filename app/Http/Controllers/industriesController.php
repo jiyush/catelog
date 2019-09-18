@@ -179,16 +179,13 @@ class industriesController extends Controller
     }
 
     public function industry(Request $request){
-        // $filters = $request->get('filters');
-        // if(!empty($request->get('category'))){
-        //     $catId = $request->get('category');
-        // }else{
-        //     $catId = $request->id;
-        // }
-        // dd($catId);
-        $id =$request->id;
+        $filters = $request->get('filters');
+        if(!empty($request->get('subcategory'))){
+            $id = $request->get('subcategory');
+        }else{
+            $id = $request->id;
+        }
         $categories = SubCategory::find($id);
-        // dd('test');
     
         if(!empty($filters)){
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')

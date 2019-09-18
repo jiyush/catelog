@@ -4263,7 +4263,11 @@ ol.comment-list {
 
 .footer.footer-two .foot-top {
     background-image: url(../img/home/foot-bg2.png);
+    background-position: 800px 150px;
+
 }
+
+
 
 .footer-one {
     background-color: #1e1e1e;

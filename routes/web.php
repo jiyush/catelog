@@ -28,6 +28,8 @@ Route::get('/industry/{id}', 'industriesController@detail')->name('industry');
 Route::get('contactus', 'aboutusController@contact')->name('contactus');
 Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.email');
 
+Route::post('/review', 'aboutusController@sendReview')->name('review.send');
+
 Route::get('/getsub/{id?}', 'SubCategoryController@getsub')->name('getsub');
 
 

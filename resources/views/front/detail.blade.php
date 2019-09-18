@@ -57,8 +57,12 @@
                                     {{ $industry->address }}</a>
                                 </li>
                                 <li class="my-1">
-                                    <a href="#">
-                                        <i class="fa fa-phone mr-2"></i> {{ $industry->phone }}</a>
+                                    {{-- <a href="#"> --}}
+                                        <a href="tel:{{ $industry->phone }}">
+                                            <i class="fa fa-phone mr-2"></i> {{ $industry->phone }}
+                                        </a>
+                                        
+                                    {{-- </a> --}}
                                 </li>
                                 
                                 <li class="my-1">
@@ -90,21 +94,24 @@
                             add review
                         </h4>
                         
-                        <form class="comment-form" id="commentform" method="post" action="#">
+                        <form class="comment-form" id="commentform" method="post" action="{{ route('review.send') }}">
+                            @csrf
+
+                            <input type="hidden" name="mailto" value="{{ $industry->email }}">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <span class="fa fa-user"></span>
-                                    <input type="text" id="name" class="form-control" placeholder="Enter Name">
+                                    <input type="text" id="name"  name="name" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <span class="fa fa-envelope"></span>
-                                    <input type="email" class="form-control" placeholder="Enter Email" name="Ented email" id="email">
+                                    <input type="email" class="form-control" name="email"  placeholder="Enter Email" name="Ented email" id="email">
                                 </div>
                                 <div class="col-12">
-                                    <textarea rows="5" name="comment" class="form-control" placeholder="Your Message" id="comment"></textarea>
+                                    <textarea rows="5" name="message" class="form-control"  placeholder="Your Message" id="comment"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-one btn-anim" id="submit" name="submit">
+                                    <button type="submit" class="btn btn-one btn-anim" style="background-color: #228ACA !important;color: #fff;" id="submit" name="submit">
                                         <i class="fa fa-paper-plane"></i> submit</button>
                                 </div>
                             </div>
