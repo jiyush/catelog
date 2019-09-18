@@ -1,6 +1,7 @@
 <!-- footer starts -->
     <footer class="footer footer-two">
-        <div class="foot-top">
+        <div class="foot-top" style="background-image: url(../img/home/foot-bg2.png) !important;
+    background-position: 800px 150px;">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-lg-12 col-12 mb-60">
