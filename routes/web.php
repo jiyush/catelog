@@ -18,7 +18,7 @@
 //Front Route
 Route::get('/', 'categoryController@show')->name('root');
 Route::get('/addlisting', 'categoryController@addListing')->name('listing.add');
-Route::post('/addlisting', 'categoryController@submitList')->name('listing.submit');
+Route::post('/addlisting', 'ApruvalController@submitList')->name('listing.submit');
 
 Route::get('/category', 'industriesController@AllIndustry')->name('industry.all');
 Route::get('/subcategory/{id}', 'industriesController@subcategory')->name('subcategory');
@@ -75,6 +75,12 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
 	// Inquuiry
 	Route::get('/inquuiry', 'inquuiryController@index')->name('inquiry.list');
+
+	//Apruval
+	Route::get('/apruval', 'ApruvalController@list')->name('apruval.list');
+	Route::get('/apruval/{id}', 'ApruvalController@show')->name('apruval.show');
+	Route::post('/apruval/add/{id}', 'ApruvalController@addIndustry')->name('apruval.add');
+	Route::post('/apruval/remove/{id}', 'ApruvalController@remove')->name('apruval.remove');
 
 	//Admin user Routes
 	Route::get('/profile', 'AdminController@show')->name('user.profile');

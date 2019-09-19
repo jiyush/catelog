@@ -45,7 +45,7 @@
                 <div class="col-12">
                         <div class="row">
                             <div class="col-12">
-                                <label>Industry Name</label>
+                                <label>Business Name</label>
                                 <input type="text" id="name" name="name" class="form-control" value="{{ Request::old('name') }}" placeholder="Industry Name" required>
                             </div>
                             <div class="col-md-3 col-12">
@@ -60,9 +60,9 @@
                                 </select>
                             </div>
                             <div class="col-md-3 col-12">
-                                <label>Subcategory</label>
+                                <label>Sub Categories</label>
                                 <select class="form-control custom-select" name="subcategory" id="subcategory" required>
-                                    <option value="">select ubcategories</option>
+                                    <option value="">select Sub Categories</option>
                                 </select>
                             </div>
                             <div class="col-md-6 col-12">
@@ -91,7 +91,15 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>state</label>
-                                <input type="text" id="state" name="state" class="form-control" value="{{ Request::old('state') }}" placeholder="State Here" required>
+                                <select class="form-control" name="state" id="state">
+                                    <option value="" required> Select State</option>
+                                    @if(!empty($state))
+                                        @foreach($state as $s)
+                                            <option value="{{ $s->bcs_id }}" >{{ $s->bcs_name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                {{-- <input type="text" id="state" name="state" class="form-control" value="{{ Request::old('state') }}" placeholder="State Here" required> --}}
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>zip code</label>

@@ -39,6 +39,21 @@
           <span>Industries</span></a>
       </li>
 
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - INDUSTRIES -->
+       <li   @if(!empty($active) && $active == 'apruval' ) 
+                             class="nav-item active" 
+                             @else
+                             class="nav-item" 
+                           @endif 
+       >
+        <a class="nav-link" href="{{ route('apruval.list') }}">
+         <i class="fas fa-building"></i>
+          <span>Listing Apruval</span></a>
+      </li>
+
       
 
       <!-- Divider -->

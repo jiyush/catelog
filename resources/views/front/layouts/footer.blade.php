@@ -48,7 +48,7 @@
                                     <a href="{{ route('industry.all') }}">listing</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('about') }}">About US</a>
+                                    <a href="{{ route('about') }}">About Us</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contactus') }}">Contact Us</a>

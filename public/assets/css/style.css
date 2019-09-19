@@ -1365,7 +1365,7 @@ h6 {
 
 .main-banner-2 .banner-content::before {
     position: absolute;
-    background-color: #228ACA;
+    /*background-color: #228ACA;*/
     height: 50px;
     width: 1px;
     content: '';
@@ -1374,7 +1374,7 @@ h6 {
 
 .main-banner-2 .banner-content::after {
     position: absolute;
-    background-color: #228ACA;
+    /*background-color: #228ACA;*/
     height: 50px;
     width: 1px;
     content: '';

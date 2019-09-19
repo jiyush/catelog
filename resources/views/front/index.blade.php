@@ -7,7 +7,7 @@
             <!-- <div class="tilt-anim" data-tilt> -->
                 <div class="banner-content">
                     
-                    <h2>Find The Best Thing In Your City</h2>
+                    <h2>Find Any Thing In Your City</h2>
                 </div>
             <!-- </div> -->
             
@@ -33,9 +33,7 @@
                 @endif
                 
             </div> --}}
-            <div class="justify-content-center">
-               <p><h4>J curve is commited to help you find  exactly what you are looking for</h4></p>
-            </div>
+            
             <form method="get" action="{{ route('industries') }}">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -129,7 +127,7 @@
                             <i class="flaticon-trophy"></i>
                         </div>
                         <h2 class="count c-theme" data-count="{{ $count['paidCount'] }}">0</h2>
-                        <p>Piad User</p>
+                        <p>Certified Listing</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
@@ -163,7 +161,7 @@
                 <div class="col-12">
                     <div class="all-title">
                         <h3 class="sec-title">
-                            Why We Are Best
+                            Why We Are The Best
                         </h3>
                         <svg class="title-sep">
                             <path fill-rule="evenodd" d="M32.000,13.000 L32.000,7.000 L35.000,7.000 L35.000,13.000 L32.000,13.000 ZM24.000,4.000 L27.000,4.000 L27.000,16.000 L24.000,16.000 L24.000,4.000 ZM16.000,-0.000 L19.000,-0.000 L19.000,20.000 L16.000,20.000 L16.000,-0.000 ZM8.000,4.000 L11.000,4.000 L11.000,16.000 L8.000,16.000 L8.000,4.000 ZM-0.000,7.000 L3.000,7.000 L3.000,13.000 L-0.000,13.000 L-0.000,7.000 Z"
@@ -193,7 +191,7 @@
                         <div class="icon-box">
                             <i class="flaticon-list"></i>
                         </div>
-                        <h5>missions</h5>
+                        <h5>mission</h5>
                         <p>To organise all genuine information and make it useful in growing your business.
                         </p>
                     </div>
@@ -205,7 +203,7 @@
                             <i class="flaticon-find-1"></i>
                         </div>
                         <h5>find your listing</h5>
-                        <p>If you are thinking of expanding your business; get registered for FREE and even Premium!
+                        <p>If you are thinking of expanding your business; get registered for FREE and Updrade to Premium any time!
                         </p>
                     </div>
                 </div>

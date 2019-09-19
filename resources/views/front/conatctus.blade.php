@@ -2,7 +2,7 @@
 @include('front.layouts.header')
 
 <!-- page-banner start-->
-<section class="page-banner">
+{{-- <section class="page-banner">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 {{-- end banner --}}
 
 <!-- contact start-->
@@ -39,11 +39,11 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <span class="fa fa-envelope"></span>
-                                            <input type="email" name="email" class="form-control" placeholder="Enter Email" name="Ented email" id="email" required>
+                                            <input type="email" name="email" class="form-control" placeholder="Enter Email" name="Ented email" required>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <span class="fa fa-phone"></span>
-                                            <input type="text" id="phn" name="phone" class="form-control" placeholder="Enter Number" required>
+                                            <input type="number" max="10" min="10" id="phn" name="phone" class="form-control" placeholder="Enter Number" required>
                                         </div>
                                         {{-- <div class="col-md-6 col-12">
                                             <span class="fa fa-edit"></span>
@@ -77,28 +77,20 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-map-marker-alt"></i>
-                                         Daman, 396191
+                                         Vapi, 396191
                                     </li>
                                 </ul>
                                 <div class="socials contact-social">
-                                    <a href="#">
+                                    <a href="https://www.facebook.com/J-Curve-110256443685547">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
                                     <a href="#">
                                         <i class="fab fa-google-plus-g"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="https://instagram.com/jcurve_india?igshid=1nz2z51io2grh">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-vine"></i>
-                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>
