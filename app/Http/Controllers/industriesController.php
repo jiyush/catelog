@@ -42,12 +42,14 @@ class industriesController extends Controller
                     //     $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
                     // }
                 })
+                ->where('status',1)
                 ->select('industries.*', 'categories.name as category_name')
                 ->paginate(9);
         }else{
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
-                                    ->select('industries.*', 'categories.name as category_name')
-                                    ->paginate(9);
+                ->where('status',1) 
+                ->select('industries.*', 'categories.name as category_name')
+                ->paginate(9);
         }
     	// $industries = Industry::paginate(10);
     	return view('admin.industry.list', compact('industries', 'filters'))->with('active', 'industries');
@@ -56,7 +58,8 @@ class industriesController extends Controller
     public function add(Request $request){
     	$categories = Category::all();
         // $sub = SubCategory::all();
-    	return view('admin.industry.add', compact('categories', 'sub'))->with('active', 'industries');	
+        $state = DB::table('states')->where('country_id',101)->select('states.*')->orderBy('name')->get();
+    	return view('admin.industry.add', compact('categories', 'state','sub'))->with('active', 'industries');	
     }
 
     public function store(Request $request){
@@ -66,7 +69,8 @@ class industriesController extends Controller
                     'type' => 'required',
                     'phone' => 'required|digits:10',
                     'email' => 'required|email',
-                    'category' => 'required'
+                    'category' => 'required',
+                    'status' => 'required',
                 ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -84,7 +88,8 @@ class industriesController extends Controller
     public function view(Request $request){
     	$industry = Industry::whereId($request->id)->first();
     	$category = Category::whereId($industry->category)->first();
-    	return view('admin.industry.view', compact('industry', 'category'))->with('active', 'industries');	
+        $images = Images::where('ind_id', $industry->id)->get();
+    	return view('admin.industry.view', compact('industry', 'category', 'images'))->with('active', 'industries');	
     }
 
     public function edit(Request $request){
@@ -92,7 +97,9 @@ class industriesController extends Controller
     	$category = Category::whereId($industry->category)->first();
     	$categories = Category::all();
         $sub = SubCategory::where('category_id', $category->id)->get();
-    	return view('admin.industry.edit', compact('industry', 'category', 'sub','categories'))->with('active', 'industries');	
+        $state = DB::table('states')->where('country_id',101)->select('states.*')->orderBy('name')->get();
+        $city = DB::table('cities')->where('state_id',$industry->state)->select('cities.*')->orderBy('name')->get();
+    	return view('admin.industry.edit', compact('industry', 'category', 'sub','categories', 'state', 'city'))->with('active', 'industries');	
     }
 
     public function update(Request $request){
@@ -111,6 +118,9 @@ class industriesController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
+        $state = DB::table('states')->where('id',$request->state)->where('country_id',101)->select('states.name')->first();
+        $city = DB::table('cities')->where('id', $request->city )->where('state_id', $request->state)->select('cities.name')->first();
+
     	$industry = Industry::whereId($request->id)->first();
      	
      	$industry->name = $request->name;
@@ -123,7 +133,7 @@ class industriesController extends Controller
      	$industry->state = $request->state;
      	$industry->products = $request->products;
      	$industry->description = $request->description;
-     	$industry->address = $request->street.','.$request->city.','.$request->state;
+     	$industry->address = $request->street.','.$city->name.','.$state->name;
         $industry->type = $request->type;
         $industry->website = $request->website;
      	$industry->update();
@@ -206,12 +216,14 @@ class industriesController extends Controller
                     // }
                 })
                 ->where('subcategory',$id)
+                ->where('status',1)
                 ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
         }else{
             $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
                 // ->join('images', 'industries.id', '=', 'images.ind_id')
                 ->where('subcategory',$id)
+                ->where('status',1)
                 // ->select('industries.*', 'categories.name as category_name', 'images.path')
                 ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
                 ->paginate(9);
@@ -232,6 +244,65 @@ class industriesController extends Controller
         $subcategory = SubCategory::where('category_id', $request->id)->get();
         $categories = Category::where('id',$request->id)->first();
         return view('front.sub', compact('subcategory', 'categories'));
+    }
+
+    public function getImage(Request $request){
+        $industry = Industry::whereId($request->id)->first();
+        $category = Category::whereId($industry->category)->first();
+        $images = Images::where('ind_id', $industry->id)->get();
+        return view('admin.industry.images', compact('industry', 'category', 'images'))->with('active', 'industries');
+    }
+
+    public function delImage(Request $request){   
+        // dd($request->all());
+        unlink( public_path('storage/industries/'.$request->path));
+        Images::find($request->image_id)->delete();
+        return redirect()->route('image.list', ['id' => $request->id]);
+    }
+
+    public function addImage(Request $request){
+        if ($request->hasFile('image')) {
+ 
+            foreach($request->file('image') as $file){
+     
+                //get filename with extension
+                $filenamewithextension = $file->getClientOriginalName();
+     
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                
+                //get file extension
+                $extension = $file->getClientOriginalExtension();
+
+                $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $filename);
+                $filename = str_replace('-', '', $filename);    
+     
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.jpg';
+                // dd($filenametostore);
+                // $ximg = Image::make( $file );
+
+                Storage::put('industries/'. $filenametostore, fopen($file, 'r+'));
+                // Storage::put('public/industries/thumbnail/'. $filenametostore, fopen($file, 'r+'));
+     
+                //Resize image here
+                $thumbnailpath = public_path('storage/industries/'.$filenametostore);
+                
+                // $thumbnailpath = Storage::url('industries/'.$filenametostore, fopen($file, 'r+'));   
+                // $thumbnailpath = $filenametostore->getRealPath();
+                // dd($thumbnailpath);
+                $img = Image::make( $file )
+                ->resize(600, null , function($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->encode('jpg', 85);
+                $img->save($thumbnailpath);
+
+                Images::create(['ind_id' => $request->id, 'path' => $filenametostore]);
+            }
+        }
+        return redirect()->route('image.list', ['id' => $request->id]);
     }
 }
 

@@ -61,8 +61,25 @@ class ApruvalController extends Controller
     }
 
     public function list(Request $request){
-    	$industries =  Apruval::join('categories', 'apruvals.category','=', 'categories.id')
-                                    ->select('apruvals.*', 'categories.name as category_name')->paginate(10);
+    	$industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                ->where('status',0) 
+                ->select('industries.*', 'categories.name as category_name')
+                ->paginate(9);
     	return view('admin.apruval.list', compact('industries'))->with('active', 'apruval');
+    }
+
+    public function show(Request $request){
+        $industry = Industry::whereId($request->id)->first();
+        $category = Category::whereId($industry->category)->first();
+        $images = Images::where('ind_id', $industry->id)->get();
+        return view('admin.apruval.view', compact('industry', 'category', 'images'))->with('active', 'apruval');
+    }
+
+    public function addIndustry(Request $request){
+        $industry = Industry::whereId($request->id)->first();
+        $industry->status = 1;
+        // dd($industry);
+        $industry->save();
+        return view('admin.apruval.list', compact('industries'))->with('active', 'apruval');      
     }
 }

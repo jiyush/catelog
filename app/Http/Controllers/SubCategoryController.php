@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\SubCategory;
 use App\Industry;
+use DB;
 
 class SubCategoryController extends Controller
 {
@@ -65,6 +66,11 @@ class SubCategoryController extends Controller
         $subcategories = SubCategory::where('category_id',$request->id)->get();
         // dd($subcategories);
         return  response()->json($subcategories);
+    }
+
+    public function city(Request $request){
+        $city = DB::table('cities')->where('state_id', $request->id)->select('cities.*')->orderBy('name')->get();
+        return  response()->json($city);
     }
 
 }

@@ -102,7 +102,9 @@
                                                 <div >
                                                     <div class="ctg-item">
                                                         <div class="icon-box " style="background-image:url('{{ asset($category->bpath) }}'); width: 301px; height: 220px; justify-content: center; display: flex; border-radius: 10px;">
+                                                            <a href="{{ route('subcategory', ['id' => $category->id]) }}">
                                                             <img src="{{ asset($category->path) }}"  style="width: 100px; height: 100px">
+                                                        </a>
                                                             {{-- <i class="apparels"></i> --}}
                                                         </div>
                                                         <div class="content-box p-4 ">
@@ -128,7 +130,9 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
                                         <div class="ctg-item">
                                             <div class="icon-box " style="background-image:url('{{ asset($category->bpath) }}'); width: 301px; height: 220px; justify-content: center; display: flex; border-radius: 10px">
+                                                <a href="{{ route('subcategory', ['id' => $category->id]) }}">
                                                 <img src="{{ asset($category->path) }}" style="height: 100px" >
+                                                </a>
                                             </div>
                                             <div class="content-box p-4">
                                                 <h5 class="mb-1">

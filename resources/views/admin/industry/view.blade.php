@@ -10,6 +10,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h5 class="m-0 font-weight-bold text-primary"> <a href="{{ route('industry.list') }}"> Industry </a> / Details
+              <div class="float-right">
+              <a href="{{ route('image.list', ['id' => $industry->id]) }}">Manage Images</a>
+              </div>
              
           </h5>
             </div>
@@ -28,7 +31,15 @@
                     <tr>
                         <th>phone</th>
                         <th>{{ $industry->phone }}</th>
-                    </tr>   
+                    </tr> 
+                    <tr>
+                        <th>Listing Type</th>
+                        <th>{{ $industry->type }}</th>
+                    </tr> 
+                    <tr>
+                        <th>Website</th>
+                        <th>{{ $industry->website }}</th>
+                    </tr> 
                     <tr>
                         <th>Category</th>
                         <th>{{ $category->name }}</th>
@@ -44,6 +55,18 @@
                     <tr>
                         <th>Products</th>
                         <th>{{ $industry->products }}</th>
+                    </tr>
+                    <tr>
+                        <th>Images</th>
+                        <th>
+                           @if(!empty($images))
+                                @foreach($images as $image)
+                                    <div class="list-slide" >
+                                        <img style="height: 200px; width: 400px;" src="{{ asset('/storage/industries/'.$image->path) }}" alt="listing">
+                                    </div>
+                                @endforeach
+                            @endif 
+                        </th>
                     </tr>
                   </thead>
                 </table>

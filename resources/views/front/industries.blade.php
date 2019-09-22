@@ -112,11 +112,13 @@
                             <div class="col-lg-4 col-md-6 col-12 mb-30">
                                 <div class="listing-item p-2">
                                     <div class="img-holder">
+                                        <a href="{{ route('industry', ['id' => $industry->id]) }}">
                                         @if(!empty($industry->path))
                                             <img src="{{ asset('/storage/industries/'.$industry->path) }}" alt="list">
                                         @else
                                             <img src="{{ asset('/images/jcurve3.png') }}" alt="list">
                                         @endif
+                                        </a>
                                         <div class="rate-like centering justify-content-between">
                                             
                                         </div>

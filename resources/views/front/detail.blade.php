@@ -52,22 +52,24 @@
                         <div class="abt-listing">
                             <ul class="ctg-info centering justify-content-start">
                                 <li>
-                                    <a target="_blank" href="http://maps.google.com/?q={{$industry->address}}">
+                                    {{-- <a target="_blank" href="http://maps.google.com/?q={{$industry->address}}"> --}}
                                         <i class="fa fa-map-marker-alt mr-2"></i>
-                                    {{ $industry->address }}</a>
+                                    {{ $industry->address }}
+                                    {{-- </a> --}}
                                 </li>
                                 <li class="my-1">
                                     {{-- <a href="#"> --}}
-                                        <a href="tel:{{ $industry->phone }}">
+                                        {{-- <a href="tel:{{ $industry->phone }}"> --}}
                                             <i class="fa fa-phone mr-2"></i> {{ $industry->phone }}
-                                        </a>
+                                        {{-- </a> --}}
                                         
                                     {{-- </a> --}}
                                 </li>
                                 
                                 <li class="my-1">
-                                    <a href="#">
-                                        <i class="fa fa-envelope mr-2"></i> {{ $industry->email }}</a>
+                                    {{-- <a href="#"> --}}
+                                        <i class="fa fa-envelope mr-2"></i> {{ $industry->email }}
+                                    {{-- </a> --}}
                                 </li>
                             </ul>
                         </div>

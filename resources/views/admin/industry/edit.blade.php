@@ -82,13 +82,36 @@
                   
                 </div>
                 <div class="form-group row">
+                  
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="city" value="{{ $industry->city }}"  class="form-control form-control-user" id="" placeholder="City">
+                    <select class="form-control" name="state" id="state">
+                        <option value="" required> Select State</option>
+                        @if(!empty($state))
+                            @foreach($state as $s)
+                              @if($s->id == $industry->state)
+                                <option value="{{ $s->id }}" selected>{{ $s->name }}</option>
+                              @else
+                                <option value="{{ $s->id }}" >{{ $s->name }}</option>
+                              @endif
+                            @endforeach
+                        @endif
+                    </select>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="state" value="{{ $industry->state }}" class="form-control form-control-user" id="" placeholder="State">
+                    <select class="form-control" name="city" id="city" required>
+                          <option value=""> Select City</option>
+                          @if(!empty($city))
+                            @foreach($city as $c)
+                              @if($c->id == $industry->city)
+                                <option value="{{ $c->id }}" selected>{{ $c->name }}</option>
+                              @else
+                                <option value="{{ $c->id }}" >{{ $c->name }}</option>
+                              @endif
+                            @endforeach
+                          @endif              
+                    </select>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -155,6 +178,27 @@
                 // console.log('key', key);
                 // console.log('value', value.id);
                   $("#subcategory").append('<option value=' + value.id + '>' + value.name + '</option>');
+              });
+              console.log(data);
+           }
+        });
+        // console.log(path);
+    });
+    $("#state").change(function() {
+        var id = this.value;
+        var path = '{{route('city')}}'
+        $.ajax({
+           type:'GET',
+           url : path+'/'+id,
+           data: '',
+           success:function(data) {
+              $("#city").attr('disabled', false);
+              $("#city option").remove();
+              $.each(data,function(key, value)
+              {
+                // console.log('key', key);
+                // console.log('value', value.id);
+                  $("#city").append('<option value=' + value.id + '>' + value.name + '</option>');
               });
               console.log(data);
            }

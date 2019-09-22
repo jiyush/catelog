@@ -42,6 +42,7 @@
                   </div>
               @endif
                 <input type="hidden" name="type" value="free">
+                <input type="hidden" name="status" value="0">
                 <div class="col-12">
                         <div class="row">
                             <div class="col-12">
@@ -87,15 +88,18 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>City</label>
-                                <input type="text" id="adress" name="city" class="form-control" placeholder="City here" value="{{ Request::old('city') }}" required>
+                                <select class="form-control" name="city" id="city" required>
+                                    <option value="" > Select City</option>
+                                    
+                                </select>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label>state</label>
-                                <select class="form-control" name="state" id="state">
+                                <select class="form-control" name="state" id="state" required>
                                     <option value="" required> Select State</option>
                                     @if(!empty($state))
                                         @foreach($state as $s)
-                                            <option value="{{ $s->bcs_id }}" >{{ $s->bcs_name }}</option>
+                                            <option value="{{ $s->id }}" >{{ $s->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -153,6 +157,12 @@
                                 <input type="file"  name="image[]" multiple >
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <input type="checkbox"  name="term" >
+                                <label style="color: black !important;">i Agree to all term & Conditions</label>
+                            </div>
+                        </div>
                     
                 </div>
             </div>
@@ -200,7 +210,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-      $("#category").change(function() {
+    $("#category").change(function() {
         var id = this.value;
         var path = '{{route('getsub')}}'
         $.ajax({
@@ -221,5 +231,29 @@
         });
         // console.log(path);
     });
+
+    $("#state").change(function() {
+        var id = this.value;
+        var path = '{{route('city')}}'
+        $.ajax({
+           type:'GET',
+           url : path+'/'+id,
+           data: '',
+           success:function(data) {
+              $("#city").attr('disabled', false);
+              $("#city option").remove();
+              $.each(data,function(key, value)
+              {
+                // console.log('key', key);
+                // console.log('value', value.id);
+                  $("#city").append('<option value=' + value.id + '>' + value.name + '</option>');
+              });
+              console.log(data);
+           }
+        });
+        // console.log(path);
+    });
+
+
   });
 </script>    

@@ -128,40 +128,42 @@ class categoryController extends Controller
 
     public function addListing(Request $request){
         $categories = Category::all();
-        $state = DB::table('ba_state')->select('ba_state.*')->get();
+        $state = DB::table('states')->where('country_id',101)->select('states.*')->orderBy('name')->get();
         return view('front.addListing', compact('categories', 'state'));
     }
 
-    // public function submitList(Request $request){
+    public function submitList(Request $request){
 
-    //     $rules = [
-    //                 // 'image' => 'sometimes|array|min:12',
-    //                 'type' => 'required',
-    //                 'phone' => 'required|digits:10',
-    //                 'email' => 'required|email',
-    //                 'category' => 'required'
-    //             ];
+        $rules = [
+                    // 'image' => 'sometimes|array|min:12',
+                    'type' => 'required',
+                    'phone' => 'required|digits:10',
+                    'email' => 'required|email',
+                    'category' => 'required',
+                    'status' => 'required',
+                    'term' => 'required',
+                ];
 
-    //     $validator = Validator::make($request->all(), $rules);
-    //     // dd($request->all());
-    //     if ($validator->fails()){
-    //         return Redirect::back()->withErrors($validator)->withInput();
-    //     }
+        $validator = Validator::make($request->all(), $rules);
+        // dd($request->all());
+        if ($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
         
-    //     $ind = $this->industry->add($request);
+        $ind = $this->industry->add($request);
 
 
-    //     // $data = array();
-    //     // $data['name'] = $request->name;
-    //     // $data['email'] = $request->email;
-    //     // $data['category'] = $request->category;
-    //     // $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
-    //     // $data['description'] = $request->description;
-    //     // $data['phone'] = $request->phone;
-    //     // $data['website'] = $request->website;
-    //     // $data['keywords'] = $request->keywords;
-    //     // $inquiry = Inquiry::create($data);
-    //     // Mail::to('selfmade.meet@gmail.com')->send(new AddListing($inquiry));
-    //     return redirect()->route('root');
-    // }
+        // $data = array();
+        // $data['name'] = $request->name;
+        // $data['email'] = $request->email;
+        // $data['category'] = $request->category;
+        // $data['address'] = $request->street.','.$request->city.','.$request->state.','.$request->pincode;
+        // $data['description'] = $request->description;
+        // $data['phone'] = $request->phone;
+        // $data['website'] = $request->website;
+        // $data['keywords'] = $request->keywords;
+        // $inquiry = Inquiry::create($data);
+        // Mail::to('selfmade.meet@gmail.com')->send(new AddListing($inquiry));
+        return redirect()->route('root');
+    }
 }

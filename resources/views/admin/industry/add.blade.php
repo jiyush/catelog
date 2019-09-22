@@ -25,6 +25,7 @@
               @endif
               <form action="{{ route('industry.store') }}" method="POST" enctype="multipart/form-data" >
                 @csrf
+                <input type="hidden" name="status" value="1">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="name">Company Name</label>
@@ -75,12 +76,23 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="city"  class="form-control form-control-user" id="" placeholder="City" required>
+                    <select class="form-control" name="state" id="state">
+                        <option value="" required> Select State</option>
+                        @if(!empty($state))
+                            @foreach($state as $s)
+                                <option value="{{ $s->id }}" >{{ $s->name }}</option>
+                            @endforeach
+                        @endif
+                    </select>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     
-                    <input type="text"  id="street" name="state" class="form-control form-control-user" id="" placeholder="State" required >
+                    <select class="form-control" name="city" id="city" required>
+                                    <option value=""> Select City</option>
+                                    
+                                </select>
                   </div>
+                  
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -153,6 +165,28 @@
         });
         // console.log(path);
     });
+    $("#state").change(function() {
+        var id = this.value;
+        var path = '{{route('city')}}'
+        $.ajax({
+           type:'GET',
+           url : path+'/'+id,
+           data: '',
+           success:function(data) {
+              $("#city").attr('disabled', false);
+              $("#city option").remove();
+              $.each(data,function(key, value)
+              {
+                // console.log('key', key);
+                // console.log('value', value.id);
+                  $("#city").append('<option value=' + value.id + '>' + value.name + '</option>');
+              });
+              console.log(data);
+           }
+        });
+        // console.log(path);
+    });
+
   });
 </script>
 @endsection

@@ -27,6 +27,9 @@ class Industry extends Model
 
     public function add($request){
 
+        $state = DB::table('states')->where('id',$request->state)->where('country_id',101)->select('states.name')->first();
+        $city = DB::table('cities')->where('id', $request->city )->where('state_id', $request->state)->select('cities.name')->first();
+
     	$industry = new Industry;
         
         $industry->name = $request->name;
@@ -34,12 +37,13 @@ class Industry extends Model
         $industry->category = $request->category;
         $industry->subcategory = $request->subcategory;
         $industry->phone = $request->phone;
+        $industry->status = $request->status;
         $industry->street = $request->street;
         $industry->city = $request->city;
         $industry->state = $request->state;
         $industry->products = $request->products;;
         $industry->description = $request->description;
-        $industry->address = $request->street.','.$request->city.','.$request->state;
+        $industry->address = $request->street.','.$city->name.','.$state->name;
         $industry->type = $request->type;
         $industry->website = $request->website;
     

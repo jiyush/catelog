@@ -18,7 +18,7 @@
 //Front Route
 Route::get('/', 'categoryController@show')->name('root');
 Route::get('/addlisting', 'categoryController@addListing')->name('listing.add');
-Route::post('/addlisting', 'ApruvalController@submitList')->name('listing.submit');
+Route::post('/addlisting', 'categoryController@submitList')->name('listing.submit');
 
 Route::get('/category', 'industriesController@AllIndustry')->name('industry.all');
 Route::get('/subcategory/{id}', 'industriesController@subcategory')->name('subcategory');
@@ -30,7 +30,9 @@ Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.em
 
 Route::post('/review', 'aboutusController@sendReview')->name('review.send');
 
+// XHR
 Route::get('/getsub/{id?}', 'SubCategoryController@getsub')->name('getsub');
+Route::get('/city/{id?}', 'SubCategoryController@city')->name('city');
 
 
 //Admin Login
@@ -72,6 +74,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 	Route::get('/industries/view/{id}', 'industriesController@view')->name('industry.view');
 	Route::post('/industries/update', 'industriesController@update')->name('industry.update');
 	Route::post('/industries/delete', 'industriesController@delete')->name('industry.delete');
+	Route::get('/industries/{id}/image', 'industriesController@getImage')->name('image.list');
+	Route::post('/industries/{id}/image', 'industriesController@delImage')->name('image.remove');
+	Route::post('/industry/{id}/image/add', 'industriesController@addImage')->name('image.add');
+
 
 	// Inquuiry
 	Route::get('/inquuiry', 'inquuiryController@index')->name('inquiry.list');
