@@ -2,7 +2,7 @@
 @include('front.layouts.header')
 
 <!-- page-banner start-->
-    <section class="page-banner">
+    {{-- <section class="page-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- end banner --}}
 
     <!-- listings start-->

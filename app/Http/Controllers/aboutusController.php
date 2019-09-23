@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Redirect;
 use Validator;
+use App\Inquiry;
 
 class aboutusController extends Controller
 {
@@ -63,6 +64,8 @@ class aboutusController extends Controller
         $review->email = $request->email;
         $review->mailto = $request->mailto;
         $review->message = $request->message;
+
+        Inquiry::create(['name' => $review->name, 'email' => $review->email, 'message' => $review->message ]);
 
         Mail::to($review->mailto)->send(new Review($review));
         return redirect()->route('root');

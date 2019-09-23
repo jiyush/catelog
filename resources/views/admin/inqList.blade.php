@@ -7,14 +7,14 @@
         <div class="container-fluid">
 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inquires</h1>
+            <h1 class="h3 mb-0 text-gray-800">Review</h1>
             
           </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 
-                      <form id="logout-form" action="{{ route('inquiry.list') }}" method="Get" >
+                     {{--  <form id="logout-form" action="{{ route('inquiry.list') }}" method="Get" >
                             @csrf
                             <div class="form-group row">
                               <div class="col-sm-3 mb-3 mb-sm-0">
@@ -30,7 +30,7 @@
                               </div>
                             </div>
 
-                        </form>
+                        </form> --}}
                   
               
             </div>
@@ -41,11 +41,7 @@
                     <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Phone</th>
-                      <th>Category</th>
-                      <th>Address</th>
-                      <th>Description</th>
-                      <th>Web Site</th>
+                      <th>Message</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,17 +50,7 @@
                             <tr>
                                 <td>{{ $inq->name }}</td>
                                 <td>{{ $inq->email }}</td>
-                                <td>{{ $inq->phone }}</td>
-                                <td>{{ $inq->category }}</td>
-                                <td >
-                                    {{ $inq->address }}
-                                </td>
-                                <td>
-                                    {{ $inq->description }}
-                                </td>
-                                <td>
-                                  {{ $inq->website }}
-                                </td>
+                                <td>{{ $inq->message }}</td>
                                 
                             </tr>
                         @endforeach

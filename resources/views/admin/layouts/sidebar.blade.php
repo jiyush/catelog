@@ -98,7 +98,7 @@
        >
         <a class="nav-link" href="{{ route('inquiry.list') }}">
           <i class="fas fa-fw fa-list-ul "></i>
-          <span>Inquies</span></a>
+          <span>Review</span></a>
       </li>
       
 

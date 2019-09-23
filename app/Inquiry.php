@@ -12,6 +12,6 @@ class Inquiry extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'keywords', 'category','phone', 'address', 'description', 'website',
+        'name', 'email', 'message',
     ];
 }

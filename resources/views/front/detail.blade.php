@@ -2,7 +2,7 @@
 @include('front.layouts.header')
 
 <!-- page-banner start-->
-    <section class="page-banner">
+    {{-- <section class="page-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- end banner --}}
      <!-- listing slider start-->
     <div class="bg-w sp-100">
@@ -135,8 +135,14 @@
                                     {{ $industry->email }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-map-marker-alt"></i>
-                                    {{ $industry->address }}
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa fa-map-marker-alt"></i></td>
+                                            <td>
+                                                {{ $industry->address }}
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </li>
                                 <li>
                                     <i class="fa fa-globe-asia"></i>

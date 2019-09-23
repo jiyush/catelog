@@ -34,6 +34,13 @@ Route::post('/review', 'aboutusController@sendReview')->name('review.send');
 Route::get('/getsub/{id?}', 'SubCategoryController@getsub')->name('getsub');
 Route::get('/city/{id?}', 'SubCategoryController@city')->name('city');
 
+Route::get('/terms', function(){
+	return view('front.terms');
+})->name('term');
+
+Route::get('/policy', function(){
+	return view('front.policy');
+})->name('policy');
 
 //Admin Login
 // Route::get('/admin/login', 'LoginController@login');

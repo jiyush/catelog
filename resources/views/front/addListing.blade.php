@@ -2,7 +2,7 @@
 @include('front.layouts.header')
 
 	<!-- page-banner start-->
-    <section class="page-banner">
+    {{-- <section class="page-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- page-banner ends-->
 
     <!-- add-list start-->
@@ -159,8 +159,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <input type="checkbox"  name="term" >
-                                <label style="color: black !important;">i Agree to all term & Conditions</label>
+                                <input type="checkbox" class="form-control" name="term" checked="checked" value="1" id="BoxID"  >
+                                <label style="color: black !important;">i Agree to all 
+                                    <a href="{{ route('term') }}" target="_blank" style="color: blue;">term & Conditions</a>
+                                    and
+                                    <a href="{{ route('policy') }}" style="color: blue;" target="_blank">Privacy Policy</a>.
+                                    </label>
                             </div>
                         </div>
                     
@@ -197,7 +201,7 @@
 	            <div class="row">
 	                <div class="col-12">
 	                    <div class="listing-submit">
-	                        <button type="submit" class="btn btn-one " style="background-color: #228ACA !important;color: #fff;">save listing</button>
+	                        <button type="submit" class="btn btn-one " id="buttonID" style="background-color: #228ACA !important;color: #fff;">Submit</button>
 	                    </div>
 	                </div>
 	            </div>
@@ -252,6 +256,11 @@
            }
         });
         // console.log(path);
+    });
+
+    $("#BoxID").click(function() {
+        alert('hey');
+      $("#buttonID").attr("disabled", !this.checked);
     });
 
 
