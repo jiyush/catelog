@@ -7,7 +7,7 @@
             <!-- <div class="tilt-anim" data-tilt> -->
                 <div class="banner-content">
                     
-                    <h2>Find Any Thing In Your City</h2>
+                    <h2>Find Any Thing</br> In Your City</h2>
                 </div>
             <!-- </div> -->
             
@@ -43,7 +43,7 @@
                             @endif
                              class="form-control" style="border-radius: 25px;" placeholder="Search by industy">
                         </div>
-                        {{-- <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="input-wrap">
                         
                                 <input type="text" name="filters[products]" 
@@ -52,7 +52,7 @@
                                 @endif
                                 class="form-control" style="border-radius: 25px;"  placeholder="Search By Produsts">
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <select class="form-control" name="category" id="category" style="border-radius: 25px;" required>
                                 <option value="">all categories</option>
@@ -63,11 +63,11 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        {{-- <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <select class="form-control" name="subcategory" id="subcategory" style="border-radius: 25px;" required>
                                 <option value="">Subcategory</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <button type="submit" class="btn btn-one btn-anim w-100" style="background-color: #228ACA !important;color: #fff;">
                                 filter now</button>
@@ -248,7 +248,7 @@ our service more faster and easier!</p>
     </div>
     <!-- app end -->
 @include('front.layouts.footer')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $(document).ready(function(){
       $("#category").change(function() {
         var id = this.value;
@@ -272,5 +272,5 @@ our service more faster and easier!</p>
         // console.log(path);
     });
   });
-</script>    
+</script>     --}}
    

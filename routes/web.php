@@ -24,6 +24,7 @@ Route::get('/category', 'industriesController@AllIndustry')->name('industry.all'
 Route::get('/subcategory/{id}', 'industriesController@subcategory')->name('subcategory');
 Route::get('industries/{id?}', 'industriesController@industry')->name('industries');
 Route::get('/about', 'aboutusController@index')->name('about');
+Route::get('/industry', 'industriesController@mixed')->name('mixed');
 Route::get('/industry/{id}', 'industriesController@detail')->name('industry');
 Route::get('contactus', 'aboutusController@contact')->name('contactus');
 Route::post('/contact/email', 'aboutusController@sendContact')->name('contact.email');

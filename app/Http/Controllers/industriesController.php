@@ -304,5 +304,48 @@ class industriesController extends Controller
         }
         return redirect()->route('image.list', ['id' => $request->id]);
     }
+
+    public function mixed(Request $request){
+        $filters = $request->get('filters');
+        
+            $id = $request->get('category');
+
+        $catid = $id;
+        // $categories = SubCategory::find($id);
+    
+        if(!empty($filters)){
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                // ->join('images', 'industries.id', '=', 'images.ind_id')
+                ->where(function($q) use ($filters) {
+                    if(!empty($filters['name'])){
+                        $q->where('industries.name', 'LIKE', '%'.$filters['name'].'%');
+                    }
+                    if(!empty($filters['products'])){
+                        // dd($filters['products']);
+                        $q->where('industries.products', 'LIKE', '%'.$filters['products'].'%');
+                    }
+                    if(!empty($filters['address'])){
+                        $q->where('industries.address', 'LIKE', '%'.$filters['address'].'%');
+                    }
+                    // if(!empty($catId)){
+                    //     $q->whereCategory($catId);   
+                    // }
+                })
+                ->where('subcategory',$id)
+                ->where('status',1)
+                ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
+                ->paginate(9);
+        }else{
+            $industries = Industry::join('categories', 'industries.category','=', 'categories.id')
+                // ->join('images', 'industries.id', '=', 'images.ind_id')
+                ->where('subcategory',$id)
+                ->where('status',1)
+                // ->select('industries.*', 'categories.name as category_name', 'images.path')
+                ->select( 'industries.*', DB::raw('(select path from images where ind_id  =   industries.id  limit 1) as path'), 'categories.name as category_name')
+                ->paginate(9);
+        }
+        // dd($filters);
+        return view('front.mixed', compact('industries', 'filters', 'catId'))->with('active', 'industries');
+    }
 }
 
